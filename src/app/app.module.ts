@@ -14,6 +14,10 @@ import { QuizzesComponent } from './quizzes/quizzes.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { TrueFalseQuestionComponent } from './true-false-question/true-false-question.component';
 import { MultipleChoiceQuestionComponent } from './multiple-choice-question/multiple-choice-question.component';
+import { RegisterComponent } from './register/register.component';
+import {UserServiceClient} from './services/UserServiceClient';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { MultipleChoiceQuestionComponent } from './multiple-choice-question/mult
     QuizzesComponent,
     QuizComponent,
     TrueFalseQuestionComponent,
-    MultipleChoiceQuestionComponent
+    MultipleChoiceQuestionComponent,
+    RegisterComponent,
+    ProfileComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -34,7 +41,8 @@ import { MultipleChoiceQuestionComponent } from './multiple-choice-question/mult
     AppRoutingModule
   ],
   providers: [
-    CourseServiceClient
+    CourseServiceClient,
+    UserServiceClient
   ],
   bootstrap: [AppComponent]
 })
