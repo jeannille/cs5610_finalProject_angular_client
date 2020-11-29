@@ -12,14 +12,16 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private service: UserServiceClient) { }
 
-  username = ''
-  password = ''
+  username = '';
+  password = '';
 
   login = (username, password) => {
+    alert(username);
+    alert(password);
     this.service.login(username, password)
       .then(actualUser => {
-        this.router.navigate(['/profile'])
-      })
+        this.router.navigate(['/profile']);
+      });
   }
 
 

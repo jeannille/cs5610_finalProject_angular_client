@@ -11,9 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { ModuleListComponent } from './module-list/module-list.component';
 import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
-import { QuizComponent } from './quiz/quiz.component';
-import { TrueFalseQuestionComponent } from './true-false-question/true-false-question.component';
-import { MultipleChoiceQuestionComponent } from './multiple-choice-question/multiple-choice-question.component';
 import { RegisterComponent } from './register/register.component';
 import {UserServiceClient} from './services/UserServiceClient';
 import { ProfileComponent } from './profile/profile.component';
@@ -28,9 +25,6 @@ import { LoginComponent } from './login/login.component';
     ModuleListComponent,
     LessonTabsComponent,
     QuizzesComponent,
-    QuizComponent,
-    TrueFalseQuestionComponent,
-    MultipleChoiceQuestionComponent,
     RegisterComponent,
     ProfileComponent,
     LoginComponent

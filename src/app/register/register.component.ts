@@ -12,17 +12,17 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router,
               private service: UserServiceClient) { }
 
-  username = ''
-  password = ''
-  verifyPassword = ''
+  username = '';
+  password = '';
+  verifyPassword = '';
 
   register = (username, password) => {
-    console.log(username, password)
+    console.log(username, password);
     this.service.register(username, password)
       .then(actualUser => {
         // console.log(actualUser)
-        this.router.navigate(['/profile'])
-      })
+        this.router.navigate(['/profile']);
+      });
   }
 
   ngOnInit(): void {

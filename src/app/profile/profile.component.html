@@ -1,9 +1,41 @@
-<h2>Profile</h2>
+<h1>Profile</h1>
 
-Hello {{user.username}}!
-
+<h3 >
+  Hello  {{user.username}} !
+</h3>
 <hr/>
 
-<button (click)="logout()">
+<ul class="list-group" >
+  <li class="list-group-item">
+    Username : {{user.username}}
+  </li>
+  <li class="list-group-item">
+    First Name : {{user.firstName}}
+    <button class="btn btn-danger float-right" >
+      Hide First Name From Public
+    </button>
+  </li>
+  <li class="list-group-item">
+    Last Name : {{user.lastName}}
+    <br>
+    <button class="btn btn-danger float-right" >
+      Hide Last Name From Public
+    </button>
+  </li>
+  <li class="list-group-item">
+    Email Name : {{user.email}}
+    <br>
+    <button class="btn btn-success " >
+      Update Email
+    </button>
+    <button class="btn btn-danger float-right" >
+      Hide Email From Public
+    </button>
+  </li>
+
+</ul>
+
+
+<button class="btn btn-danger" (click)="logout()">
   Logout
 </button>
