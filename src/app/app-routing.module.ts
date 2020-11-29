@@ -8,18 +8,20 @@ import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
 import {SearchComponent} from './search/search.component';
+import {SearchDetailsComponent} from './search-details/search-details.component';
 
 const routes: Routes = [
   {path: 'quizzes', component: QuizzesComponent},
   {path: '', component: HomeComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'details/:movieID', component: SearchDetailsComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'courses', component: CourseListComponent},
-  {path: 'details/:courseId', component: CourseViewerComponent},
-  {path: 'details/:courseId/modules/:moduleId', component: CourseViewerComponent},
-  {path: 'details/:courseId/modules/:moduleId/lessons/:lessonId', component: CourseViewerComponent}
+  // {path: 'courses', component: CourseListComponent},
+  // {path: 'details/:courseId', component: CourseViewerComponent},
+  // {path: 'details/:courseId/modules/:moduleId', component: CourseViewerComponent},
+  // {path: 'details/:courseId/modules/:moduleId/lessons/:lessonId', component: CourseViewerComponent}
 ];
 
 @NgModule({

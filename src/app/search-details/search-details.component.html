@@ -1,0 +1,38 @@
+<app-nav-bar></app-nav-bar>
+
+<h1 class="wdbv-searchByID-header"> Movie Details </h1>
+
+  <div class="row">
+
+  <div class="row wdbv-searchByID-row">
+    <div class="col-4">
+      <div class="wbdv_home_cardDeck">
+        <div class="card text-center" style="width: 20rem;">
+          <img class="card-img-top" src="{{movie.Poster}}" alt="Card image cap">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title "> {{movie.Title}}   </h5>
+            <p class="card-text">   {{movie.Year}} </p>
+            <a href="#" class="align-self-end btn btn-danger btn-block"> Add </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <h1> {{movie.Title}} </h1>
+    <b> Plot : </b> {{movie.Plot}} <br/>
+    <b> Rated : </b> {{movie.Rated}} <br/>
+    <b> Awards : </b> {{movie.Awards}} <br/>
+    <b> Released : </b> {{movie.Released}} <br/>
+    <b> Runtime : </b> {{movie.Runtime}} <br/>
+    <b> Genre : </b> {{movie.Genre}} <br/>
+    <b> Director : </b> {{movie.Director}} <br/>
+    <b> Writer : </b> {{movie.Writer}} <br/>
+    <b> Actors : </b> {{movie.Actors}} <br/>
+    <b> Production : </b> {{movie.Production}} <br/>
+    <b> imdbRating : </b> {{movie.imdbRating}} <br/>
+    <b> imdbVotes : </b> {{movie.imdbVotes}} <br/>
+  </div>
+
+  </div>

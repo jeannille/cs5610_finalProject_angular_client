@@ -10,7 +10,7 @@ export class SearchComponent implements OnInit {
   searchText = '';
   moviesSearchResult = {
     Search: []
-  }
+  };
 
   constructor(private omdbService: OMDBServiceClient) { }
 
