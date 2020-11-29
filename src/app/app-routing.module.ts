@@ -7,10 +7,12 @@ import {QuizzesComponent} from './quizzes/quizzes.component';
 import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
+import {SearchComponent} from './search/search.component';
 
 const routes: Routes = [
   {path: 'quizzes', component: QuizzesComponent},
   {path: '', component: HomeComponent},
+  {path: 'search', component: SearchComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'login', component: LoginComponent},

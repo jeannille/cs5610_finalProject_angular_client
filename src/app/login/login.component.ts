@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
   password = '';
 
   login = (username, password) => {
-    alert(username);
-    alert(password);
     this.service.login(username, password)
       .then(actualUser => {
         this.router.navigate(['/profile']);
