@@ -1,41 +1,52 @@
-<h1>Profile</h1>
-
-<h3 >
-  Hello  {{user.username}} !
-</h3>
-<hr/>
-
-<ul class="list-group" >
-  <li class="list-group-item">
-    Username : {{user.username}}
-  </li>
-  <li class="list-group-item">
-    First Name : {{user.firstName}}
-    <button class="btn btn-danger float-right" >
-      Hide First Name From Public
-    </button>
-  </li>
-  <li class="list-group-item">
-    Last Name : {{user.lastName}}
-    <br>
-    <button class="btn btn-danger float-right" >
-      Hide Last Name From Public
-    </button>
-  </li>
-  <li class="list-group-item">
-    Email Name : {{user.email}}
-    <br>
-    <button class="btn btn-success " >
-      Update Email
-    </button>
-    <button class="btn btn-danger float-right" >
-      Hide Email From Public
-    </button>
-  </li>
-
-</ul>
+<app-nav-bar></app-nav-bar>
 
 
-<button class="btn btn-danger" (click)="logout()">
-  Logout
-</button>
+<div class="wbdv_profile_page">
+
+  <h1>Profile </h1>
+
+  <ul class="list-group" >
+    <li class="list-group-item">
+      <h5> Username : </h5>
+      {{user.username}}
+    </li>
+    <li class="list-group-item">
+      <h5> First Name : </h5>
+        {{user.firstName}}
+      <button class="btn btn-danger float-right" >
+        Hide From Public
+      </button>
+    </li>
+    <li class="list-group-item">
+      <h5> Last Name :  </h5>
+        {{user.lastName}}
+      <br>
+      <button class="btn btn-danger float-right" >
+        Hide From Public
+      </button>
+    </li>
+    <li class="list-group-item">
+      <h5> Email Name : </h5>
+      <span [hidden]="user.editing">
+      {{user.email}}
+      </span>
+      <br>
+      <button class="btn btn-danger float-right" >
+        Hide From Public
+      </button>
+      <input [hidden]="!user.editing" [(ngModel)]="user.email"/>
+          <button class="btn btn-success" [hidden]="user.editing" (click)="editUser(user)">
+            Edit
+          </button>
+          <button class="btn btn-success" [hidden]="!user.editing" (click)="saveUser(user)">
+            Save
+          </button>
+    </li>
+  </ul>
+
+  <button class="btn btn-danger btn-block wbdv_profile_logoutBtn" (click)="logout()">
+    Logout
+  </button>
+
+
+</div>

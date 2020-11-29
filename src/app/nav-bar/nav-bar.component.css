@@ -1,0 +1,13 @@
+.wbdv_nav_bar{
+  padding: 20px;
+}
+
+.wbdv_nav_bar_brand{
+  font-size: 1.75rem;
+  font-weight: 200;
+}
+
+.wbdv_nav_bar_loggedIn{
+  padding-left: 900px;
+
+}

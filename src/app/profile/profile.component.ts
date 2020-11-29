@@ -16,8 +16,9 @@ export class ProfileComponent implements OnInit {
     username: '',
     firstName: '',
     lastName: '',
-    email: ''
-  }
+    email: '',
+    editing: false
+  };
 
   logout = () =>
     this.service.logout()
@@ -25,7 +26,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.profile()
-      .then(profile => this.user = profile)
+      .then(profile => this.user = profile);
+  }
+
+  editUser = (topic) =>
+    topic.editing = true
+
+  saveUser = (topic) => {
+    topic.editing = false;
+    // this.topicService.updateTopic(topic);
+    // .then(status => this.modules = this.modules.map(m => m._id === module._id ? module : m))
   }
 
 }

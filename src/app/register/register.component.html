@@ -1,22 +1,28 @@
-<h2>Register</h2>
+<app-nav-bar></app-nav-bar>
 
-<!-- [(ngModel)] -- Bind the var 'username' to input -->
-<input placeholder="username"
-       [(ngModel)]="username"
-       class="form-control"/>
-<br/>
-<input placeholder="password"
-       type="password"
-       [(ngModel)]="password"
-       class="form-control"/>
-<br/>
-<input placeholder="verify password"
-       type="password"
-       [(ngModel)]="verifyPassword"
-       class="form-control"/>
-<br/>
-<button
-  (click)="register(username, password)"
-  class="btn btn-primary btn-block">
-  Register
-</button>
+<div class="wbdv_register_page">
+
+  <h2>Register</h2>
+
+  <!-- [(ngModel)] -- Bind the var 'username' to input -->
+  <input placeholder="username"
+         [(ngModel)]="username"
+         class="form-control"/>
+  <br/>
+  <input placeholder="password"
+         type="password"
+         [(ngModel)]="password"
+         class="form-control"/>
+  <br/>
+  <input placeholder="verify password"
+         type="password"
+         [(ngModel)]="verifyPassword"
+         class="form-control"/>
+  <br/>
+  <button
+    (click)="register(username, password)"
+    class="btn btn-primary btn-block">
+    Register
+  </button>
+
+</div>
