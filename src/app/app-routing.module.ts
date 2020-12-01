@@ -9,15 +9,19 @@ import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
 import {SearchComponent} from './search/search.component';
 import {SearchDetailsComponent} from './search-details/search-details.component';
+import {MovieListComponent} from './movie-list/movie-list.component';
 
 const routes: Routes = [
   {path: 'quizzes', component: QuizzesComponent},
   {path: '', component: HomeComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'search/:searchText', component: SearchComponent},
   {path: 'details/:movieID', component: SearchDetailsComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'movielist', component: MovieListComponent},
+
   // {path: 'courses', component: CourseListComponent},
   // {path: 'details/:courseId', component: CourseViewerComponent},
   // {path: 'details/:courseId/modules/:moduleId', component: CourseViewerComponent},

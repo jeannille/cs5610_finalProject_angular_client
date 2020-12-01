@@ -19,6 +19,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchComponent } from './search/search.component';
 import {OMDBServiceClient} from './services/OMDBServiceClient';
 import { SearchDetailsComponent } from './search-details/search-details.component';
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SearchDetailsComponent } from './search-details/search-details.componen
     LoginComponent,
     NavBarComponent,
     SearchComponent,
-    SearchDetailsComponent
+    SearchDetailsComponent,
+    MovieListComponent
   ],
   imports: [
     FormsModule,
