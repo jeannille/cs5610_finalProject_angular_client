@@ -8,10 +8,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(private router: Router,
-              private service: UserServiceClient) { }
-
   user = {
     username: '',
     firstName: '',
@@ -20,14 +16,23 @@ export class ProfileComponent implements OnInit {
     editing: false
   };
 
+  checkLoggedIn: {};
+
+  constructor(private router: Router,
+              private service: UserServiceClient) { }
+
+  ngOnInit(): void {
+    // this.checkLoggedIn = sessionStorage.getItem('username');
+    // console.log('checkloggedIn' + this.checkLoggedIn)
+    // if (this.checkLoggedIn !== null) {
+      this.service.profile()
+        .then(profile => this.user = profile);
+    // }
+  }
+
   logout = () =>
     this.service.logout()
       .then(status => this.router.navigate(['/']))
-
-  ngOnInit(): void {
-    this.service.profile()
-      .then(profile => this.user = profile);
-  }
 
   editUser = (topic) =>
     topic.editing = true

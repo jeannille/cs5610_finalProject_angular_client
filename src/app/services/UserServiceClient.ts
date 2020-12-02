@@ -9,13 +9,16 @@ export class UserServiceClient {
     fetch(`http://localhost:3000/logout`, {
       method: 'POST',
       credentials: 'include'
-    })
+    }).catch(err => console.log(err))
+
 
   profile = () =>
     fetch(`http://localhost:3000/profile`, {
       method: 'POST',
       credentials: 'include'
     }).then(response => response.json())
+      .catch(err => console.log(err))
+
 
   login = (username, password) =>
     fetch(`http://localhost:3000/login`, {
@@ -26,6 +29,8 @@ export class UserServiceClient {
       },
       credentials: 'include'
     }).then(response => response.json())
+      .catch(err => console.log(err))
+
 
   register = (username, password) =>
     fetch(`http://localhost:3000/register`, {
@@ -36,4 +41,6 @@ export class UserServiceClient {
       },
       credentials: 'include'
     }).then(response => response.json())
+      .catch(err => console.log(err))
+
 }

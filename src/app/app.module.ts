@@ -12,7 +12,7 @@ import { ModuleListComponent } from './module-list/module-list.component';
 import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { RegisterComponent } from './register/register.component';
-import {UserServiceClient} from './services/UserServiceClient';
+import { UserServiceClient} from './services/UserServiceClient';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -20,6 +20,7 @@ import { SearchComponent } from './search/search.component';
 import {OMDBServiceClient} from './services/OMDBServiceClient';
 import { SearchDetailsComponent } from './search-details/search-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { MovieServiceClient} from './services/MovieServiceClient';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MovieListComponent } from './movie-list/movie-list.component';
   providers: [
     CourseServiceClient,
     UserServiceClient,
-    OMDBServiceClient
+    OMDBServiceClient,
+    MovieServiceClient
   ],
   bootstrap: [AppComponent]
 })

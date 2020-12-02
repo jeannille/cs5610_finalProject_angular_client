@@ -17,12 +17,20 @@ export class NavBarComponent implements OnInit {
     editing: false
   };
 
+  checkLoggedIn: {};
+
+
+
   constructor(private router: Router,
               private service: UserServiceClient) { }
 
   ngOnInit(): void {
-    this.service.profile()
-      .then(profile => this.user = profile);
+    // this.checkLoggedIn = sessionStorage.getItem({profile.username});
+    // console.log('checkloggedIn' + this.checkLoggedIn)
+    // if (this.checkLoggedIn !== null) {
+      this.service.profile()
+        .then(profile => this.user = profile);
+    // }
   }
 
   logout = () =>
