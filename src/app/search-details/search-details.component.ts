@@ -92,7 +92,7 @@ export class SearchDetailsComponent implements OnInit {
           .then(profile => this.user = profile);
         console.log(this.user.username);
       } catch (error) {
-        console.error('Here is the error message', error);
+        // console.error('Here is the error message', error);
         window.alert('You must sign in to use this feature.');
       }
     }

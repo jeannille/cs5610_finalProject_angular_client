@@ -10,27 +10,35 @@ import {Router} from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   user = {
-    username: '',
+    username: null,
     firstName: '',
     lastName: '',
     email: '',
     editing: false
   };
 
-  checkLoggedIn: {};
+  loggedIn: boolean
 
 
 
   constructor(private router: Router,
               private service: UserServiceClient) { }
 
-  ngOnInit(): void {
-    // this.checkLoggedIn = sessionStorage.getItem({profile.username});
+  async ngOnInit(): Promise<void> {
+    this.loggedIn = false
+    // this.checkLoggedIn = sessionStorage.getItem('username');
     // console.log('checkloggedIn' + this.checkLoggedIn)
     // if (this.checkLoggedIn !== null) {
-      this.service.profile()
-        .then(profile => this.user = profile);
-    // }
+    await this.service.profile()
+      .then(profile => this.user = profile)
+      .catch(err => console.log(err))
+    try {
+      if (this.user.username !== undefined) {
+        this.loggedIn = true;
+      }
+    } catch (e) {
+        console.log('No user is logged in | NAV BAR');
+    }
   }
 
   logout = () =>

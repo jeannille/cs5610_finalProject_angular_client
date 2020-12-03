@@ -12,8 +12,8 @@ export class UserServiceClient {
     }).catch(err => console.log(err))
 
 
-  profile = () =>
-    fetch(`http://localhost:3000/profile`, {
+  profile = async () =>
+    await fetch(`http://localhost:3000/profile`, {
       method: 'POST',
       credentials: 'include'
     }).then(response => response.json())
