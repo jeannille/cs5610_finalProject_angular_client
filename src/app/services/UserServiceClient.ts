@@ -5,6 +5,17 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class UserServiceClient {
 
+  findUserById = (userId) =>
+    fetch(`http://localhost:3000/findUserById/` + userId, {
+      method: 'POST',
+      body: JSON.stringify({userId}),
+      headers: {
+        'content-type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(response => response.json())
+      .catch(err => console.log(err))
+
   logout = () =>
     fetch(`http://localhost:3000/logout`, {
       method: 'POST',
