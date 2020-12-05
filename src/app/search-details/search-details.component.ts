@@ -69,7 +69,7 @@ export class SearchDetailsComponent implements OnInit {
     editing: false
   };
 
-  listOfUsersThatAddedMovie = [];
+  usernamesWhoAddedMovie = [];
 
   isLoggedIn = '';
 
@@ -78,7 +78,7 @@ export class SearchDetailsComponent implements OnInit {
               private userService: UserServiceClient,
               private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.route.params.subscribe(params => {
       // fetch movie details from OMDB
       this.movieID = params.movieID;
@@ -90,12 +90,16 @@ export class SearchDetailsComponent implements OnInit {
         .then(doc => this.movieMatchDetails = doc);
       });
 
-      // find user names of those listed on moviematchdetails
-      this.findUserById()
+    // window.alert(this.movieMatchDetails.usersThatAddedMovie.length)
+    //
+    // // find user names of those listed on moviematchdetails
+    // for (const userId of this.movieMatchDetails.usersThatAddedMovie) {
+    //   this.findUserById(userId);
+    // }
     }
 
-    Add = async () => {
-      // Make sure the user is logged in
+    Add =  async () => {
+      // check if user is logged in
       try {
         await this.userService.profile()
           .then(profile => this.user = profile);
@@ -103,32 +107,37 @@ export class SearchDetailsComponent implements OnInit {
       } catch (error) {
         window.alert('You must sign in to use this feature.');
       }
-      this.updateMovieDetailsAddUser();
+      // user is logged in -- continue to add move to details list
+      // this.updateMovieDetailsAddUser();
+      // this.updateUserMovieList();
     }
 
 
     updateMovieDetailsAddUser = () => {
-      // add current user to recently added this movie
-      this.movieServiceClient.updateMovieDetailsAddUser(this.movieID, this.user._id)
-          .then(doc => this.movieMatchDetails = doc);
-
-      // for (const userId of this.movieMatchDetails.usersThatAddedMovie) {
-      //   this.findUserById(this.user._id);
-      // }
-
-      // window.alert(this.listOfUsersThatAddedMovie);
+      // add current user to the list of users who recently added this movie
+       this.movieServiceClient.updateMovieDetailsAddUser(this.movieID, this.user._id)
+        .then(doc => this.movieMatchDetails = doc);
     }
 
-    findUserById  =  (userId) => {
-      // window.alert('findUserByID function reached');
+    findUserById  =   (userId) => {
+      window.alert('findUserByID function reached wih userID : ' + userId);
       this.userService.findUserById(userId)
-        .then(userDoc => userDoc);
+        .then(userDoc => this.usernamesWhoAddedMovie.push(userDoc.username));
       // window.alert('Search-Detail| find users by ID : ' + userId);
     }
 
 
-
     // TODO update the user's MovieList
+    updateUserMovieList = () => {
+      window.alert('Search Details | UserID :' + this.user._id + this.user.username +
+      ' | MovieID is : ' + this.movie.imdbID)
+      this.userService.update(this.user._id, {movie: this.movie.imdbID})
+        .then(actualUser => {
+          if (actualUser !== undefined || null) {
+            window.alert('Movie added to ' + this.user.username + 'MovieList');
+          }
+        });
+    }
 
   }
 

@@ -5,6 +5,17 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class UserServiceClient {
 
+  update = (userId, newEdits) =>
+    fetch(`http://localhost:3000/update/` + userId, {
+      method: 'PUT',
+      body: JSON.stringify(newEdits),
+      headers: {
+        'content-type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(response => response.json())
+      .catch(err => console.log(err))
+
   findUserById = (userId) =>
     fetch(`http://localhost:3000/findUserById/` + userId, {
       method: 'POST',
