@@ -89,6 +89,9 @@ export class SearchDetailsComponent implements OnInit {
       this.movieServiceClient.getMovieMatchDetails(this.movieID)
         .then(doc => this.movieMatchDetails = doc);
       });
+
+      // find user names of those listed on moviematchdetails
+      this.findUserById()
     }
 
     Add = async () => {
@@ -101,28 +104,25 @@ export class SearchDetailsComponent implements OnInit {
         window.alert('You must sign in to use this feature.');
       }
       this.updateMovieDetailsAddUser();
-
-
     }
 
 
     updateMovieDetailsAddUser = () => {
-      // get list of Users that have already added this movie
+      // add current user to recently added this movie
       this.movieServiceClient.updateMovieDetailsAddUser(this.movieID, this.user._id)
           .then(doc => this.movieMatchDetails = doc);
 
-      for (const userId of this.movieMatchDetails.usersThatAddedMovie) {
-        this.listOfUsersThatAddedMovie.push('3');
-        this.findUserById(this.user._id);
-      }
+      // for (const userId of this.movieMatchDetails.usersThatAddedMovie) {
+      //   this.findUserById(this.user._id);
+      // }
 
-      window.alert(this.listOfUsersThatAddedMovie);
+      // window.alert(this.listOfUsersThatAddedMovie);
     }
 
-    findUserById  = async (userId) => {
-      window.alert('findUserByID function reached');
-      await this.userService.findUserById(userId)
-        .then(userDoc => this.listOfUsersThatAddedMovie.push(userDoc));
+    findUserById  =  (userId) => {
+      // window.alert('findUserByID function reached');
+      this.userService.findUserById(userId)
+        .then(userDoc => userDoc);
       // window.alert('Search-Detail| find users by ID : ' + userId);
     }
 

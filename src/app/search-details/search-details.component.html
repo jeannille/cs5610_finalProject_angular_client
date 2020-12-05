@@ -46,7 +46,7 @@
         <b> Number of Times this Movie has been Added to a MovieList: </b>
       </li>
       <li class="list-group-item">
-        {{listOfUsersThatAddedMovie.length}}
+        {{movieMatchDetails.usersThatAddedMovie.length}}
       </li>
     </ul>
     <ul class="list-group">
@@ -55,9 +55,6 @@
       </li>
       <li class="list-group-item" *ngFor="let users of movieMatchDetails.usersThatAddedMovie">
         {{users}}
-      </li>
-      <li class="list-group-item" *ngFor="let username of listOfUsersThatAddedMovie">
-        {{username}}
       </li>
     </ul>
   </div>
