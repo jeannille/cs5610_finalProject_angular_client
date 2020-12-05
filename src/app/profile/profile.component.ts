@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user = {
+    _id: '',
     username: '',
     firstName: '',
     lastName: '',

@@ -7,6 +7,10 @@
 
   <ul class="list-group" >
     <li class="list-group-item">
+      <h5> UserId : </h5>
+      {{user._id}}
+    </li>
+    <li class="list-group-item">
       <h5> Username : </h5>
       {{user.username}}
     </li>
@@ -43,7 +47,7 @@
           </button>
     </li>
     <li class="list-group-item">
-      <a class="nav-link" href="/movielist">
+      <a class="nav-link" href="/movielist/{{user._id}}">
         <h5> My MovieList </h5>
       </a>
     </li>
