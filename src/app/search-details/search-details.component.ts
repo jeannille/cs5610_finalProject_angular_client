@@ -108,8 +108,8 @@ export class SearchDetailsComponent implements OnInit {
         window.alert('You must sign in to use this feature.');
       }
       // user is logged in -- continue to add move to details list
-      // this.updateMovieDetailsAddUser();
-      // this.updateUserMovieList();
+      this.updateMovieDetailsAddUser();
+      this.updateUserMovieList();
     }
 
 
@@ -131,10 +131,10 @@ export class SearchDetailsComponent implements OnInit {
     updateUserMovieList = () => {
       window.alert('Search Details | UserID :' + this.user._id + this.user.username +
       ' | MovieID is : ' + this.movie.imdbID)
-      this.userService.update(this.user._id, {movie: this.movie.imdbID})
+      this.userService.update(this.user._id, {movies: this.movie.imdbID})
         .then(actualUser => {
           if (actualUser !== undefined || null) {
-            window.alert('Movie added to ' + this.user.username + 'MovieList');
+            window.alert('Movie added to ' + this.user.username + ' MovieList');
           }
         });
     }

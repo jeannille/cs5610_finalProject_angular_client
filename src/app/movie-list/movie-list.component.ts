@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 export class MovieListComponent implements OnInit {
 
   user = {
+    _id: '',
     username: '',
     firstName: '',
     lastName: '',
@@ -22,67 +23,54 @@ export class MovieListComponent implements OnInit {
 
   movieObjectsList = [];
 
-  // movieID = '';
-  // movie = {
-  //   Title: '',
-  //   Year: '',
-  //   Rated: '',
-  //   Released: '',
-  //   Runtime: '',
-  //   Genre: '',
-  //   Director: '',
-  //   Writer: '',
-  //   Actors: '',
-  //   Plot: '',
-  //   Language: '',
-  //   Country: '',
-  //   Awards: '',
-  //   Poster: '',
-  //   Ratings: [
-  //     {
-  //       Source: '',
-  //       Value: '',
-  //     },
-  //     {
-  //       Source: '',
-  //       Value: '',
-  //     },
-  //     {
-  //       Source: '',
-  //       Value: '',
-  //     }
-  //   ],
-  //   Metascore: '',
-  //   imdbRating: '',
-  //   imdbVotes: '',
-  //   imdbID: '',
-  //   Type: '',
-  //   DVD: '',
-  //   BoxOffice: '',
-  //   Production: '',
-  //   Website: '',
-  //   Response: '',
-  // };
+  user2 = {
+    _id: '',
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    editing: false,
+    movies: [],
+    password: '',
+  };
 
 
-
-  constructor(private service: UserServiceClient,
+  constructor(private userservice: UserServiceClient,
               private omdbService: OMDBServiceClient,
              ) { }
 
+  // async ngOnInit(): Promise<void> {
+  //   await this.userservice.profile()
+  //     .then(profile => this.user = profile)
+  //   for (const movieId of this.user.movies) {
+  //     console.log(movieId);
+  //     this.fetchMovieByID(movieId);
+  //   }
+  // }
+
   async ngOnInit(): Promise<void> {
-    await this.service.profile()
+    await this.getUserProfile();
+  }
+
+  findUserById = async () => {
+    await this.userservice.findUserById(this.user._id)
+      .then(actualUser => this.user2 = actualUser);
+  }
+
+  getUserProfile = async () => {
+    await this.userservice.profile()
       .then(profile => this.user = profile)
-    for (const movieId of this.user.movies) {
+    await this.findUserById();
+    for (const movieId of this.user2.movies) {
       console.log(movieId);
       this.fetchMovieByID(movieId);
     }
   }
 
-  fetchMovieByID = (movieID) => {
-    this.omdbService.fetchMovieByID(movieID)
-      .then(movieDocument => this.movieObjectsList.push(movieDocument));
-    console.log(this.movieObjectsList);
-  }
+    fetchMovieByID = async (movieID) => {
+      await this.omdbService.fetchMovieByID(movieID)
+        .then(movieDocument => this.movieObjectsList.push(movieDocument));
+      console.log(this.movieObjectsList);
+    }
 
-}
+  }
