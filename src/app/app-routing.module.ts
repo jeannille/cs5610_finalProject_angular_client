@@ -10,6 +10,7 @@ import {LoginComponent} from './login/login.component';
 import {SearchComponent} from './search/search.component';
 import {SearchDetailsComponent} from './search-details/search-details.component';
 import {MovieListComponent} from './movie-list/movie-list.component';
+import {CuratedListComponent} from './curated-list/curated-list.component';
 
 const routes: Routes = [
   {path: 'quizzes', component: QuizzesComponent},
@@ -24,6 +25,8 @@ const routes: Routes = [
   // do NOT delete this second iteration of HomeComponent
   // allows page to refresh when user logs out
   {path: 'home', component: HomeComponent},
+  {path: 'curatedList', component: CuratedListComponent},
+
 
   // {path: 'courses', component: CourseListComponent},
   // {path: 'details/:courseId', component: CourseViewerComponent},

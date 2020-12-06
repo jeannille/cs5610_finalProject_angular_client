@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/UserServiceClient';
+import {CurateServiceClient} from '../services/CurateServiceClient';
+import {OMDBServiceClient} from '../services/OMDBServiceClient';
 
 @Component({
   selector: 'app-home',
@@ -21,11 +23,26 @@ export class HomeComponent implements OnInit {
     editing: false
   };
 
+  curatedLists = [
+    {
+      movies: [],
+      title: '',
+      description: '',
+    }
+  ]
+
+  movieObjects = [];
+
+
   constructor( private userService: UserServiceClient,
+               private curateService: CurateServiceClient,
+               private omdbService: OMDBServiceClient,
                ) { }
 
    async ngOnInit(): Promise<void> {
     await this.isUserLoggedIn();
+    await this.getCuratedLists();
+    await this.convertMovieIdsToObjects();
   }
 
   // check if user is logged in
@@ -49,4 +66,35 @@ export class HomeComponent implements OnInit {
       console.log('error');
     }
   }
-}
+
+  getCuratedLists = async () => {
+    await this.curateService.getCuratedLists()
+      .then(results => this.curatedLists = results);
+  }
+
+  getMovieObjects = async (movieId)  => {
+    await  this.omdbService.fetchMovieByID(movieId)
+      .then(movieObject => this.movieObjects.push(movieObject));
+    //window.alert('MovieObjectsLength' + this.movieObjects.toString());
+  }
+
+  convertMovieIdsToObjects = async () => {
+    // window.alert(this.curatedLists.length)
+    for (const list of this.curatedLists) {
+      // window.alert(JSON.stringify('list.movie : ' + list.movies));
+      for (const movieId of list.movies) {
+        window.alert(JSON.stringify(movieId));
+        await this.getMovieObjects(movieId);
+      }
+      console.log('movieOBJECTs ' + JSON.stringify(this.movieObjects));
+      }
+
+    }
+  }
+
+
+
+
+
+
+

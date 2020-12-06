@@ -4,7 +4,7 @@
 }
 
 .wbdv_home_cardDeck{
-  margin : 50px;
+  margin : 18px;
 }
 
 .wbdv_home_jumotron{
@@ -14,3 +14,23 @@
 .wbdv_home_jumotron_heading{
   font-weight: 200;
 }
+
+
+.wbdv-search-card-img-top {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}
+
+.wdbv-searchByID-row {
+  margin-top : 20px;
+  padding-left: 46px;
+}
+
+.wbdv-search-card{
+  /*margin:15px;*/
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 15px;
+}
+

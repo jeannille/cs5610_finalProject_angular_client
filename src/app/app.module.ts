@@ -21,6 +21,8 @@ import {OMDBServiceClient} from './services/OMDBServiceClient';
 import { SearchDetailsComponent } from './search-details/search-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieServiceClient} from './services/MovieServiceClient';
+import {CurateServiceClient} from './services/CurateServiceClient';
+import { CuratedListComponent } from './curated-list/curated-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { MovieServiceClient} from './services/MovieServiceClient';
     NavBarComponent,
     SearchComponent,
     SearchDetailsComponent,
-    MovieListComponent
+    MovieListComponent,
+    CuratedListComponent
   ],
   imports: [
     FormsModule,
@@ -48,7 +51,8 @@ import { MovieServiceClient} from './services/MovieServiceClient';
     CourseServiceClient,
     UserServiceClient,
     OMDBServiceClient,
-    MovieServiceClient
+    MovieServiceClient,
+    CurateServiceClient,
   ],
   bootstrap: [AppComponent]
 })
