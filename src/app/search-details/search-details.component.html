@@ -54,9 +54,6 @@
       <li class="list-group-item">
       <b> Users that Recently Added This Movie : </b>
       </li>
-      <li class="list-group-item" *ngFor="let uid of movieMatchDetails.usersThatAddedMovie">
-        {{uid}}
-      </li>
       <li class="list-group-item" *ngFor="let user of userProfiles">
        <a href="/profile/{{user._id}}" >
         {{user.username}}

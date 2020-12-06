@@ -69,9 +69,8 @@ export class SearchDetailsComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    editing: false
   };
-  //
+  // list of user Profile Objects
   userProfiles = [];
 
   isLoggedIn = '';
@@ -91,6 +90,7 @@ export class SearchDetailsComponent implements OnInit {
     await this.fetchMovieById();
     // fetch movie details from our own database
     await this.getMovieMatchDetails();
+    // fetch userProfiles of user who added this movie
     await this.getUserProfiles();
   }
 
@@ -103,7 +103,6 @@ export class SearchDetailsComponent implements OnInit {
       .then(doc => this.movieMatchDetails = doc);
   }
 
-
   getUserProfiles = async () => {
     for (const userId of this.movieMatchDetails.usersThatAddedMovie) {
       window.alert('findUserByID function reached wih userID : ' + userId);
@@ -115,8 +114,9 @@ export class SearchDetailsComponent implements OnInit {
 
 
 
-
-
+  /*
+   * Add Button
+   */
   Add = async () => {
     // check if user is logged in
     try {

@@ -11,6 +11,7 @@ import {SearchComponent} from './search/search.component';
 import {SearchDetailsComponent} from './search-details/search-details.component';
 import {MovieListComponent} from './movie-list/movie-list.component';
 import {CuratedListComponent} from './curated-list/curated-list.component';
+import {ProfileAnonComponent} from './profile-anon/profile-anon.component';
 
 const routes: Routes = [
   {path: 'quizzes', component: QuizzesComponent},
@@ -22,16 +23,13 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
   {path: 'movielist/:uid', component: MovieListComponent},
-  // do NOT delete this second iteration of HomeComponent
-  // allows page to refresh when user logs out
+  // do NOT delete this second iteration of HomeComponent allows page to refresh when user logs out
   {path: 'home', component: HomeComponent},
   {path: 'curatedList', component: CuratedListComponent},
+  {path: 'profile/:userID', component: ProfileAnonComponent}
 
 
-  // {path: 'courses', component: CourseListComponent},
-  // {path: 'details/:courseId', component: CourseViewerComponent},
-  // {path: 'details/:courseId/modules/:moduleId', component: CourseViewerComponent},
-  // {path: 'details/:courseId/modules/:moduleId/lessons/:lessonId', component: CourseViewerComponent}
+
 ];
 
 @NgModule({
