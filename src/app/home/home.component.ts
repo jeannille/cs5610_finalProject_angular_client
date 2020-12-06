@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   user = {
     _id: '',
-    username: 'bob',
+    username: '',
     password: '',
     movies: '',
     firstName: '',
@@ -29,9 +29,13 @@ export class HomeComponent implements OnInit {
       title: '',
       description: '',
     }
-  ]
+  ];
 
   movieObjects = [];
+
+  mostRecentMovie = {
+    Title: ''
+  };
 
 
   constructor( private userService: UserServiceClient,
@@ -39,21 +43,15 @@ export class HomeComponent implements OnInit {
                private omdbService: OMDBServiceClient,
                ) { }
 
+   // CuratedLists are movieIDs which need
+   // to be converted to Objects
    async ngOnInit(): Promise<void> {
     await this.isUserLoggedIn();
     await this.getCuratedLists();
     await this.convertMovieIdsToObjects();
+    await this.getMostRecentMovie();
   }
 
-  getUsername = () => {
-    if (this.isUserLoggedIn) {
-      return this.user.username;
-    } else {
-      return null;
-    }
-  }
-
-  // check if user is logged in
   isUserLoggedIn =  async () => {
     // use session to find if user is logged in
     try {
@@ -70,7 +68,6 @@ export class HomeComponent implements OnInit {
         window.alert('HOME| loggedIn : ' + this.loggedIn);
       }
     } catch (error) {
-      // console.log('HOME| loggedIn : ' + this.loggedIn);
       console.log('error');
     }
   }
@@ -88,14 +85,19 @@ export class HomeComponent implements OnInit {
   convertMovieIdsToObjects = async () => {
     for (const list of this.curatedLists) {
       for (const movieId of list.movies) {
-        // window.alert(JSON.stringify(movieId));
         await this.getMovieObjects(movieId);
       }
-      console.log('movieOBJECTs ' + JSON.stringify(this.movieObjects));
-      }
-
     }
+    // window.alert(JSON.stringify( this.movieObjects[0]));
   }
+
+  getMostRecentMovie = async () => {
+    const movieId = this.user.movies[this.user.movies.length - 1];
+    await this.omdbService.fetchMovieByID(movieId)
+      .then(movieObject => this.mostRecentMovie = movieObject);
+  }
+
+}
 
 
 

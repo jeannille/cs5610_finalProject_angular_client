@@ -10,7 +10,12 @@
     <div class="jumbotron">
       <h1 class="display-4 wbdv_home_jumotron_heading"> Welcome {{user.username}} </h1>
 
-      <h5 class="lead text-muted"> Movie you recently added : </h5>
+      <h5 class="lead text-muted">
+        Movie you recently added :
+        <a href="/details/{{this.user.movies[this.user.movies.length-1]}}" >
+          {{this.mostRecentMovie.Title}}
+        </a>
+      </h5>
     </div>
   </div>
 </ng-template>
@@ -30,10 +35,7 @@
   </div>
 </ng-template>
 
-
-
-
-
+<!-- ** CuratedList ** -->
 <div class ="container">
   <div class=" wdbv_home_curatedList">
     <div>
@@ -45,63 +47,23 @@
     </div>
   </div>
 </div>
-
-    <div class="container">
-      <div class="row wdbv-searchByID-row">
-        <div *ngFor="let movie of movieObjects">
-          <div class="wbdv_home_cardDeck col-4">
-            <div class="card wbdv-search-card text-center" style="width: 18rem;">
-              <img class="card-img-top wbdv-search-card-img-top" src="{{movie.Poster}}" alt="Card image cap">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title"> {{movie.Title}}   </h5>
-                <p class="card-text">   {{movie.Plot}} </p>
-                <a href="/details/{{movie.imdbID}}" class="btn btn-primary btn-block"> Details </a>
-              </div>
-            </div>
+<div class="container">
+  <div class="row wdbv-searchByID-row">
+    <div *ngFor="let movie of movieObjects">
+      <div class="wbdv_home_cardDeck col-4">
+        <div class="card wbdv-search-card text-center" style="width: 18rem;">
+          <img class="card-img-top wbdv-search-card-img-top" src="{{movie.Poster}}" alt="Card image cap">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"> {{movie.Title}}   </h5>
+            <p class="card-text">   {{movie.Plot}} </p>
+            <a href="/details/{{movie.imdbID}}" class="btn btn-primary btn-block"> Details </a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-
-
-
-
-
-<!--  <div class="col-4">-->
-<!--    &lt;!&ndash; Anonymous user content &ndash;&gt;-->
-<!--    <h3> Featured Movie </h3>-->
-<!--    <div class="wbdv_home_cardDeck">-->
-<!--      <div class="card" style="width: 18rem;">-->
-<!--        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/7106uLYY2LL._AC_SL1111_.jpg" alt="Card image cap">-->
-<!--        <div class="card-body">-->
-<!--          <h5 class="card-title "> Featured Movie   </h5>-->
-<!--          <h3 class="card-title "> Inception  </h3>-->
-<!--          <p class="card-text">   Your mind is the scene of the crime. </p>-->
-<!--          <a href="#" class="btn btn-primary btn-block"> Details </a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-<!--  <h1> Logged in ? {{loggedIn}}</h1>-->
-
-<!--  &lt;!&ndash; Logged in User Content &ndash;&gt;-->
-<!--  <h1> Logged in Content </h1>-->
-<!--    <div [hidden]="loggedIn === false">-->
-<!--      <div class="wbdv_home_cardDeck">-->
-<!--        <div class="card" style="width: 18rem;">-->
-<!--          <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/7106uLYY2LL._AC_SL1111_.jpg" alt="Card image cap">-->
-<!--          <div class="card-body">-->
-<!--            <h5 class="card-title "> Featured Movie   </h5>-->
-<!--            <h3 class="card-title "> Inception  </h3>-->
-<!--            <p class="card-text">   Your mind is the scene of the crime. </p>-->
-<!--            <a href="#" class="btn btn-primary btn-block"> Details </a>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 
 
 
