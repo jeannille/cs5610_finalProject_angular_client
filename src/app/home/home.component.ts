@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserServiceClient} from '../services/UserServiceClient';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  loggedIn = false;
 
-  ngOnInit(): void {
+  user = {
+    _id: '',
+    username: '',
+    password: '',
+    movies: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    editing: false
+  };
+
+  constructor( private userService: UserServiceClient,
+               ) { }
+
+   async ngOnInit(): Promise<void> {
+    await this.isUserLoggedIn();
   }
 
+  // check if user is logged in
+  isUserLoggedIn =  async () => {
+    // use session to find if user is logged in
+    try {
+      await this.userService.profile()
+        .then(profile => this.user = profile);
+      console.log(this.user._id);
+    } catch (error) {
+      window.alert(error);
+    }
+    // get local flag 'loggedIn'
+    try {
+      if (this.user._id !== undefined) {
+        this.loggedIn = true;
+        window.alert('HOME| loggedIn : ' + this.loggedIn);
+      }
+    } catch (error) {
+      // console.log('HOME| loggedIn : ' + this.loggedIn);
+      console.log('error');
+    }
+  }
 }

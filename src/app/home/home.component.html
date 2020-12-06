@@ -1,8 +1,5 @@
 <app-nav-bar></app-nav-bar>
 
-
-
-
 <div class="container text-center wbdv_home_jumotron">
   <div class="jumbotron">
     <h1 class="display-4 wbdv_home_jumotron_heading"> Welcome to MovieMatch </h1>
@@ -31,8 +28,12 @@
 </div>
 
 
-  <!-- Logged in User Content -->
-  <div [hidden]="">
+<h1> Logged in ? {{loggedIn}}</h1>
+
+<!-- Logged in User Content -->
+<h1> Logged in Content </h1>
+
+  <div [hidden]="loggedIn === false">
     <div class="wbdv_home_cardDeck">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/7106uLYY2LL._AC_SL1111_.jpg" alt="Card image cap">

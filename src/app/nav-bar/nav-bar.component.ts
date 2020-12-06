@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   user = {
+    _id: '',
     username: null,
     firstName: '',
     lastName: '',
@@ -43,7 +44,7 @@ export class NavBarComponent implements OnInit {
 
   logout = () =>
     this.service.logout()
-      .then(status => this.router.navigate(['/']))
+      .then(status => this.router.navigate(['/home']))
 
 
 }

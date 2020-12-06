@@ -21,6 +21,9 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
   {path: 'movielist/:uid', component: MovieListComponent},
+  // do NOT delete this second iteration of HomeComponent
+  // allows page to refresh when user logs out
+  {path: 'home', component: HomeComponent},
 
   // {path: 'courses', component: CourseListComponent},
   // {path: 'details/:courseId', component: CourseViewerComponent},

@@ -112,25 +112,23 @@ export class SearchDetailsComponent implements OnInit {
       this.updateUserMovieList();
     }
 
-
+    // add current user to the list of users who recently added this movie
     updateMovieDetailsAddUser = () => {
-      // add current user to the list of users who recently added this movie
        this.movieServiceClient.updateMovieDetailsAddUser(this.movieID, this.user._id)
         .then(doc => this.movieMatchDetails = doc);
     }
 
-    findUserById  =   (userId) => {
+    findUserById  =  (userId) => {
       window.alert('findUserByID function reached wih userID : ' + userId);
       this.userService.findUserById(userId)
         .then(userDoc => this.usernamesWhoAddedMovie.push(userDoc.username));
-      // window.alert('Search-Detail| find users by ID : ' + userId);
     }
 
 
-    // TODO update the user's MovieList
+    // Update the user's MovieList
     updateUserMovieList = () => {
       window.alert('Search Details | UserID :' + this.user._id + this.user.username +
-      ' | MovieID is : ' + this.movie.imdbID)
+      ' | MovieID is : ' + this.movie.imdbID);
       this.userService.update(this.user._id, {movies: this.movie.imdbID})
         .then(actualUser => {
           if (actualUser !== undefined || null) {
