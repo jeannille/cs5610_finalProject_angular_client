@@ -19,8 +19,25 @@
          [(ngModel)]="verifyPassword"
          class="form-control"/>
   <br/>
+<!--  TO DO : switch to select dropdown-->
+  <input placeholder="Choose Role"
+         type = "text"
+         [(ngModel)]="role"
+         class="form-control"/>
+  <br/>
+  <input placeholder="First Name"
+         type = "text"
+         [(ngModel)]="firstName"
+         class="form-control"/>
+  <br/>
+  <input placeholder="Last Name"
+         type = "text"
+         [(ngModel)]="lastName"
+         class="form-control"/>
+  <br/>
+
   <button
-    (click)="register(username, password)"
+    (click)="register(username, password, role, firstName, lastName)"
     class="btn btn-primary btn-block">
     Register
   </button>

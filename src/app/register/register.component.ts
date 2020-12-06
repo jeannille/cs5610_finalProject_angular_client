@@ -15,10 +15,13 @@ export class RegisterComponent implements OnInit {
   username = '';
   password = '';
   verifyPassword = '';
+  role = '';
+  firstName = '';
+  lastName = '';
 
-  register = (username, password) => {
-    console.log(username, password);
-    this.service.register(username, password)
+  register = (username, password, role, firstName, lastName) => {
+    console.log(username, password, role, firstName, lastName);
+    this.service.register(username, password, role, firstName, lastName)
       .then(actualUser => {
         // console.log(actualUser)
         this.router.navigate(['/profile']);

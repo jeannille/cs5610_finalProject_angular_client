@@ -54,10 +54,10 @@ export class UserServiceClient {
       .catch(err => console.log(err))
 
 
-  register = (username, password) =>
+  register = (username, password, role, firstName, lastName) =>
     fetch(`http://localhost:3000/register`, {
       method: 'POST',
-      body: JSON.stringify({username, password}),
+      body: JSON.stringify({username, password, role, firstName, lastName}),
       headers: {
         'content-type': 'application/json'
       },
