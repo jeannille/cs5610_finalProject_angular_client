@@ -27,9 +27,6 @@ export class NavBarComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.loggedIn = false
-    // this.checkLoggedIn = sessionStorage.getItem('username');
-    // console.log('checkloggedIn' + this.checkLoggedIn)
-    // if (this.checkLoggedIn !== null) {
     await this.service.profile()
       .then(profile => this.user = profile)
       .catch(err => console.log(err))
