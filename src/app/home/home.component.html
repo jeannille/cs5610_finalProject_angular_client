@@ -1,26 +1,36 @@
+<!-- ** Navigation Bar ** -->
 <app-nav-bar></app-nav-bar>
 
-<div [hidden]="loggedIn === true" class="container text-center wbdv_home_jumotron">
-  <div class="jumbotron">
-    <h1 class="display-4 wbdv_home_jumotron_heading"> Welcome to MovieMatch </h1>
-    <h5 class="lead text-muted"> Let's get started finding a movie to watch with your friends! </h5>
-    <p class="lead text-muted"> Sign in to add your friends and
-      create a personal MovieList filled with your favorite films. Look through the site and
-      click the 'Add' button every time you see a movie you like. Then selected a friend to
-      compare your MovieLists and determine if you have a mutually liked flick.
-    </p>
-    <a href="/register"  class="btn btn-primary my-2 wbdv-home-jumbotron-btn"> Sign Up </a>
-    <a href="/login" class="btn btn-secondary my-2 wbdv-home-jumbotron-btn"> Login </a>
+<!-- ** Jumbotron w/Conditional Rendering ** -->
+<ng-container
+  *ngIf="loggedIn; then _loggedIn; else _loggedOut">
+</ng-container>
+<ng-template #_loggedIn>
+  <div class="container text-center wbdv_home_jumotron">
+    <div class="jumbotron">
+      <h1 class="display-4 wbdv_home_jumotron_heading"> Welcome {{user.username}} </h1>
+
+      <h5 class="lead text-muted"> Movie you recently added : </h5>
+    </div>
   </div>
-</div>
+</ng-template>
+<ng-template #_loggedOut>
+  <div class="container text-center wbdv_home_jumotron">
+    <div class="jumbotron">
+      <h1 class="display-4 wbdv_home_jumotron_heading"> Welcome to MovieMatch </h1>
+      <h5 class="lead text-muted"> Let's get started finding a movie to watch with your friends! </h5>
+      <p class="lead text-muted"> Sign in to add your friends and
+        create a personal MovieList filled with your favorite films. Look through the site and
+        click the 'Add' button every time you see a movie you like. Then selected a friend to
+        compare your MovieLists and determine if you have a mutually liked flick.
+      </p>
+      <a href="/register"  class="btn btn-primary my-2 wbdv-home-jumbotron-btn"> Sign Up </a>
+      <a href="/login" class="btn btn-secondary my-2 wbdv-home-jumbotron-btn"> Login </a>
+    </div>
+  </div>
+</ng-template>
 
 
-<div [hidden]="loggedIn === false" class="container text-center wbdv_home_jumotron">
-  <div class="jumbotron">
-    <h1 class="display-4 wbdv_home_jumotron_heading"> Welcome {{user.username}} </h1>
-    <h5 class="lead text-muted"> Movie you recently added : </h5>
-  </div>
-</div>
 
 
 

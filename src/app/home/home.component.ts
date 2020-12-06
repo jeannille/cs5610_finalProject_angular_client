@@ -45,6 +45,14 @@ export class HomeComponent implements OnInit {
     await this.convertMovieIdsToObjects();
   }
 
+  getUsername = () => {
+    if (this.isUserLoggedIn) {
+      return this.user.username;
+    } else {
+      return null;
+    }
+  }
+
   // check if user is logged in
   isUserLoggedIn =  async () => {
     // use session to find if user is logged in
@@ -75,15 +83,12 @@ export class HomeComponent implements OnInit {
   getMovieObjects = async (movieId)  => {
     await  this.omdbService.fetchMovieByID(movieId)
       .then(movieObject => this.movieObjects.push(movieObject));
-    //window.alert('MovieObjectsLength' + this.movieObjects.toString());
   }
 
   convertMovieIdsToObjects = async () => {
-    // window.alert(this.curatedLists.length)
     for (const list of this.curatedLists) {
-      // window.alert(JSON.stringify('list.movie : ' + list.movies));
       for (const movieId of list.movies) {
-        window.alert(JSON.stringify(movieId));
+        // window.alert(JSON.stringify(movieId));
         await this.getMovieObjects(movieId);
       }
       console.log('movieOBJECTs ' + JSON.stringify(this.movieObjects));
