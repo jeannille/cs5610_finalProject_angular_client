@@ -7,42 +7,42 @@
 
   <ul class="list-group">
     <li class="list-group-item">
-      <h5> UserId : </h5>
-      {{user._id}}
+      <p><strong> UserId :</strong>
+        {{user._id}}  </p>
     </li>
     <li class="list-group-item">
-      <h5> Username : </h5>
-      {{user.username}}
+      <p><strong> Username : </strong>
+        {{user.username}} </p>
     </li>
     <li class="list-group-item">
-      <h5> password: </h5>
-      {{user.password}}
+      <p><strong> password: </strong>
+        {{user.password}} </p>
 
     </li>
     <li class="list-group-item">
-      <h5> User Role: </h5>
-      {{user.role}}
+      <p><strong> User Role: </strong>
+        {{user.role}} </p>
     </li>
     <li class="list-group-item">
-      <h5> First Name : </h5>
-      {{user.firstName}}
+      <p><strong>First Name :</strong>
+        {{user.firstName}}</p>
       <button class="btn btn-danger float-right">
         Hide From Public
       </button>
     </li>
     <li class="list-group-item">
-      <h5> Last Name : </h5>
-      {{user.lastName}}
+      <p> <strong> Last Name : </strong>
+      {{user.lastName}} </p>
       <br>
       <button class="btn btn-danger float-right">
         Hide From Public
       </button>
     </li>
     <li class="list-group-item">
-      <h5> Email Name : </h5>
+      <p> <strong> Email Address : </strong>
       <span [hidden]="user.editing">
       {{user.email}}
-      </span>
+      </span>  </p>
       <br>
       <button class="btn btn-danger float-right">
         Hide From Public
@@ -61,6 +61,7 @@
       </a>
     </li>
   </ul>
+
   <div> Is the user an admin?:
     <button [hidden]="user.role === 'Admin'">
       No user is Anonymous
@@ -70,42 +71,42 @@
     </button>
   </div>
   <br>
-  <table class = "table table-bordered" [hidden]="user.role !== 'Admin'">
-      <!--
-            COURSE TITLE : Links to Update URL
-            If the course is editing, hide course title.
-            Show input field.
-            If the course is NOT editing show course title link.
-            Hide input field.
-      -->
-      <thead>
-      <tr>
+  <table class="table table-bordered" [hidden]="user.role !== 'Admin'">
+    <!--
+          COURSE TITLE : Links to Update URL
+          If the course is editing, hide course title.
+          Show input field.
+          If the course is NOT editing show course title link.
+          Hide input field.
+    -->
+    <thead>
+    <tr>
       <th>Username</th>
       <th>Password</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Role</th>
-      </tr>
-      </thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Role</th>
+    </tr>
+    </thead>
 
-      <tbody *ngFor="let user of users">
-      <td>
-        {{user.username}}
-      </td>
-      <td>
-        {{user.password}}
-      </td>
-      <td>
-        {{user.firstName}}
-      </td>
-      <td>
-        {{user.lastName}}
-      </td>
-      <td>
-        {{user.role}}
-      </td>
+    <tbody *ngFor="let user of users">
+    <td>
+      {{user.username}}
+    </td>
+    <td>
+      {{user.password}}
+    </td>
+    <td>
+      {{user.firstName}}
+    </td>
+    <td>
+      {{user.lastName}}
+    </td>
+    <td>
+      {{user.role}}
+    </td>
 
-      </tbody>
+    </tbody>
     <!--    <span [hidden]="course.editing">{{course.title}}</span>-->
 
     <!--    maybe use if user.role === '', its an anonymous view-->

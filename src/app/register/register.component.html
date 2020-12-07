@@ -41,6 +41,17 @@
          class="form-control"/>
   <br/>
 
+  <ul>
+    <li class="list-group-item" *ngFor="let listedOption of options">
+    {{listedOption}}
+    <input
+      type="radio"
+      [(ngModel)]="selectedRole"
+      value="{{listedOption}}"
+    />
+    </li>
+  </ul>
+
   <button
     (click)="register(username, password, role, firstName, lastName, email)"
     class="btn btn-primary btn-block">
