@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit {
 
   loggedIn: boolean
 
+  navbarOpen = false;
 
 
   constructor(private router: Router,
@@ -42,6 +43,13 @@ export class NavBarComponent implements OnInit {
   logout = () =>
     this.service.logout()
       .then(status => this.router.navigate(['/home']))
+
+
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
+
 
 
 }

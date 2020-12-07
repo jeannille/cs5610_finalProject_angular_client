@@ -17,7 +17,6 @@ export class SearchComponent implements OnInit {
   urlSearchText = '';
 
 
-
   constructor(private omdbService: OMDBServiceClient,
               private route: ActivatedRoute) { }
 
