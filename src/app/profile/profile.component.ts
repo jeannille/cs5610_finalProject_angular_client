@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/UserServiceClient';
 import {Router} from '@angular/router';
 
@@ -8,9 +8,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  users = [];
+
   user = {
     _id: '',
     username: '',
+    password: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -21,15 +25,18 @@ export class ProfileComponent implements OnInit {
   checkLoggedIn: {};
 
   constructor(private router: Router,
-              private service: UserServiceClient) { }
+              private service: UserServiceClient) {
+  }
 
   ngOnInit(): void {
     // this.checkLoggedIn = sessionStorage.getItem('username');
     // console.log('checkloggedIn' + this.checkLoggedIn)
     // if (this.checkLoggedIn !== null) {
-      this.service.profile()
-        .then(profile => this.user = profile);
+    this.service.profile()
+      .then(profile => this.user = profile);
     // }
+    this.service.findAllUsers()
+      .then(users => this.users = users);
   }
 
   logout = () =>

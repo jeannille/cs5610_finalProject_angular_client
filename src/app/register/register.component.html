@@ -9,6 +9,11 @@
          [(ngModel)]="username"
          class="form-control"/>
   <br/>
+  <input placeholder="Email Address"
+         type="email"
+         [(ngModel)]="email"
+         class="form-control"/>
+  <br/>
   <input placeholder="password"
          type="password"
          [(ngModel)]="password"
@@ -37,7 +42,7 @@
   <br/>
 
   <button
-    (click)="register(username, password, role, firstName, lastName)"
+    (click)="register(username, password, role, firstName, lastName, email)"
     class="btn btn-primary btn-block">
     Register
   </button>

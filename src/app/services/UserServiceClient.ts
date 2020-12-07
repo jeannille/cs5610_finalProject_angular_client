@@ -14,7 +14,7 @@ export class UserServiceClient {
       },
       credentials: 'include'
     }).then(response => response.json())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
 
   findUserById = (userId) =>
     fetch(`http://localhost:3000/findUserById/` + userId, {
@@ -25,13 +25,13 @@ export class UserServiceClient {
       },
       credentials: 'include'
     }).then(response => response.json())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
 
   logout = () =>
     fetch(`http://localhost:3000/logout`, {
       method: 'POST',
       credentials: 'include'
-    }).catch(err => console.log(err))
+    }).catch(err => console.log(err));
 
 
   profile = async () =>
@@ -39,7 +39,7 @@ export class UserServiceClient {
       method: 'POST',
       credentials: 'include'
     }).then(response => response.json())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
 
 
   login = (username, password) =>
@@ -51,18 +51,24 @@ export class UserServiceClient {
       },
       credentials: 'include'
     }).then(response => response.json())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
 
 
-  register = (username, password, role, firstName, lastName) =>
+  register = (username, password, role, firstName, lastName, email) =>
     fetch(`http://localhost:3000/register`, {
       method: 'POST',
-      body: JSON.stringify({username, password, role, firstName, lastName}),
+      body: JSON.stringify({username, password, role, firstName, lastName, email}),
       headers: {
         'content-type': 'application/json'
       },
       credentials: 'include'
     }).then(response => response.json())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+
+  // path variable? check courses
+  findAllUsers = () =>
+    fetch('http://localhost:3000/api/users')
+      .then(response => response.json())
+
 
 }
