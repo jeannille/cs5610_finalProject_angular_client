@@ -14,7 +14,8 @@ export class ProfileComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    editing: false
+    editing: false,
+    role: '',
   };
 
   checkLoggedIn: {};

@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
+    role: 'admin',
     editing: false
   };
 
@@ -28,13 +29,24 @@ export class HomeComponent implements OnInit {
       movies: [],
       title: '',
       description: '',
+      _id: '',
     }
   ];
 
   movieObjects = [];
 
+  // movieId of most recent movie
+  // added by user
+  movieId = '';
+
+  // fetched Object from omdb
   mostRecentMovie = {
     Title: ''
+  };
+
+  myMovieObject = {
+    parentList: '',
+    value: {},
   };
 
 
@@ -66,6 +78,7 @@ export class HomeComponent implements OnInit {
       if (this.user._id !== undefined) {
         this.loggedIn = true;
         window.alert('HOME| loggedIn : ' + this.loggedIn);
+        window.alert(JSON.stringify(this.user));
       }
     } catch (error) {
       console.log('error');
@@ -79,7 +92,11 @@ export class HomeComponent implements OnInit {
 
   getMovieObjects = async (movieId)  => {
     await  this.omdbService.fetchMovieByID(movieId)
-      .then(movieObject => this.movieObjects.push(movieObject));
+      .then(movieObject => {
+        this.movieObjects.push(movieObject);
+        }
+      );
+    console.log('movieOBJECTS ' + JSON.stringify(this.movieObjects));
   }
 
   convertMovieIdsToObjects = async () => {
@@ -92,8 +109,12 @@ export class HomeComponent implements OnInit {
   }
 
   getMostRecentMovie = async () => {
-    const movieId = this.user.movies[this.user.movies.length - 1];
-    await this.omdbService.fetchMovieByID(movieId)
+    try {
+      this.movieId = this.user.movies[this.user.movies.length - 1];
+    } catch (error) {
+      console.log(error);
+    }
+    await this.omdbService.fetchMovieByID(this.movieId)
       .then(movieObject => this.mostRecentMovie = movieObject);
   }
 
