@@ -1,8 +1,9 @@
 <app-nav-bar></app-nav-bar>
 
-<h1 class="text-muted"> {{user.username}}'s MovieList </h1>
 
 <div class="container wdbv-movieList-container">
+  <h1> {{user.username}}'s MovieList </h1>
+  <p class="lead text-muted"> All your favorite movies.  </p>
   <div class="row wdbv-searchByID-row">
     <div *ngFor="let m of movieObjectsList">
       <div class="wbdv_home_cardDeck col-4">

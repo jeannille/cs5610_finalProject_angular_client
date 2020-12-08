@@ -38,7 +38,9 @@ export class ProfileComponent implements OnInit {
       .then(status => this.router.navigate(['/']))
 
   saveUser = () => {
-    console.log(this.user)
+    console.log(this.user);
+    this.service.updateProfile(this.user._id, this.user)
+      .then(actualUser => window.alert(JSON.stringify(actualUser)));
     // this.service.update(this.user._id, this.user)
     //   .then(status => window.alert('Your Changes have been Saved'));
   }

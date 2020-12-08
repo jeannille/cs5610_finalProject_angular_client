@@ -113,7 +113,6 @@ export class SearchDetailsComponent implements OnInit {
   }
 
 
-
   /*
    * Add Button
    */
@@ -129,7 +128,7 @@ export class SearchDetailsComponent implements OnInit {
     // user is logged in -- continue to add movie to details list
     await this.updateMovieDetailsAddUser();
     await this.updateUserMovieList();
-    await this.getUserProfiles();
+    await this.addMostRecentUser();
   }
 
   // Add current user to the list of users who recently added this movie
@@ -148,6 +147,13 @@ export class SearchDetailsComponent implements OnInit {
           window.alert('Movie added to ' + this.user.username + ' MovieList');
         }
       });
+  }
+
+  addMostRecentUser = async () => {
+      const indexOfMostRecentUser = this.movieMatchDetails.usersThatAddedMovie.length - 1;
+      await this.userService.findUserById(this.movieMatchDetails.usersThatAddedMovie[indexOfMostRecentUser])
+        .then(userDoc => this.userProfiles.push(userDoc));
+      window.alert(this.userProfiles);
   }
 
 
