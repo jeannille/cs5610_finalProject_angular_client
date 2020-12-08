@@ -127,21 +127,22 @@ export class SearchDetailsComponent implements OnInit {
       window.alert('You must sign in to use this feature.');
     }
     // user is logged in -- continue to add movie to details list
-    this.updateMovieDetailsAddUser();
-    this.updateUserMovieList();
+    await this.updateMovieDetailsAddUser();
+    await this.updateUserMovieList();
+    await this.getUserProfiles();
   }
 
   // Add current user to the list of users who recently added this movie
-  updateMovieDetailsAddUser = () => {
-    this.movieServiceClient.updateMovieDetailsAddUser(this.movieID, this.user._id)
+  updateMovieDetailsAddUser = async () => {
+    await this.movieServiceClient.updateMovieDetailsAddUser(this.movieID, this.user._id)
       .then(doc => this.movieMatchDetails = doc);
   }
 
   // Update the user's MovieList
-  updateUserMovieList = () => {
+  updateUserMovieList = async () => {
     window.alert('Search Details | UserID :' + this.user._id + this.user.username +
       ' | MovieID is : ' + this.movie.imdbID);
-    this.userService.update(this.user._id, {movies: this.movie.imdbID})
+    await this.userService.update(this.user._id, {movies: this.movie.imdbID})
       .then(actualUser => {
         if (actualUser !== undefined || null) {
           window.alert('Movie added to ' + this.user.username + ' MovieList');

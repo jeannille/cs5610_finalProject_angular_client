@@ -37,8 +37,10 @@ export class ProfileComponent implements OnInit {
     this.service.logout()
       .then(status => this.router.navigate(['/']))
 
-  saveUser = () =>
+  saveUser = () => {
     console.log(this.user)
-
+    // this.service.update(this.user._id, this.user)
+    //   .then(status => window.alert('Your Changes have been Saved'));
+  }
 
 }
