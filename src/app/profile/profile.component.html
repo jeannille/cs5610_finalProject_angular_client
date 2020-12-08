@@ -1,10 +1,9 @@
 <app-nav-bar></app-nav-bar>
 
-
 <div class="wbdv_profile_page container mr-auto">
 
   <h1>Profile </h1>
-
+  <p class="lead text-muted"> After modifying, click 'Save Changes' at the bottom of the screen. </p>
   <ul class="list-group" >
     <li class="list-group-item">
       <h5> UserId : </h5>
@@ -14,50 +13,81 @@
       <h5> Username : </h5>
       {{user.username}}
     </li>
+    <!-- **  First Name  ** -->
     <li class="list-group-item">
-      <h5> First Name : </h5>
+      <h5> First Name :  </h5>
+      <span [hidden]="user.firstNameEditing">
         {{user.firstName}}
-      <button class="btn btn-danger float-right" >
+      </span>
+      <button class="btn btn-danger float-right"  [hidden]="user.firstNameHide "  (click)="user.firstNameHide = true" >
         Hide From Public
       </button>
+      <button class="btn btn-primary float-right"  [hidden]="!user.firstNameHide"  (click)="user.firstNameHide = false" >
+        Show to Public
+      </button>
+      <input class="wdbv_input" [hidden]="!user.firstNameEditing" [(ngModel)]="user.firstName"/>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="user.firstNameEditing" (click)="user.firstNameEditing = true">
+        Edit
+      </button>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="!user.firstNameEditing" (click)="user.firstNameEditing = false; ">
+        OK
+      </button>
     </li>
+    <!-- **  Last Name  ** -->
     <li class="list-group-item">
       <h5> Last Name :  </h5>
+      <span [hidden]="user.lastNameEditing">
         {{user.lastName}}
-      <br>
-      <button class="btn btn-danger float-right" >
-        Hide From Public
-      </button>
-    </li>
-    <li class="list-group-item">
-      <h5> Email Name : </h5>
-      <span [hidden]="user.editing">
-      {{user.email}}
       </span>
-      <br>
-      <button class="btn btn-danger float-right" >
+      <button class="btn btn-danger float-right"  [hidden]="user.lastNameHide "  (click)="user.lastNameHide = true" >
         Hide From Public
       </button>
-      <input [hidden]="!user.editing" [(ngModel)]="user.email"/>
-          <button class="btn btn-success" [hidden]="user.editing" (click)="editUser(user)">
-            Edit
-          </button>
-          <button class="btn btn-success" [hidden]="!user.editing" (click)="saveUser(user)">
-            Save
-          </button>
+      <button class="btn btn-primary float-right"  [hidden]="!user.lastNameHide"  (click)="user.lastNameHide = false" >
+        Show to Public
+      </button>
+      <input class="wdbv_input" [hidden]="!user.lastNameEditing" [(ngModel)]="user.lastName"/>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="user.lastNameEditing" (click)="user.lastNameEditing = true">
+        Edit
+      </button>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="!user.lastNameEditing" (click)="user.lastNameEditing = false">
+        Ok
+      </button>
     </li>
+    <!-- **  Email  ** -->
+    <li class="list-group-item">
+      <h5> Email :  </h5>
+      <span [hidden]="user.emailEditing">
+        {{user.email}}
+      </span>
+      <button class="btn btn-danger float-right"  [hidden]="user.emailHide "  (click)="user.emailHide = true" >
+        Hide From Public
+      </button>
+      <button class="btn btn-primary float-right"  [hidden]="!user.emailHide"  (click)="user.emailHide = false" >
+        Show to Public
+      </button>
+      <input class="wdbv_input" [hidden]="!user.emailEditing" [(ngModel)]="user.email"/>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="user.emailEditing" (click)="user.emailEditing = true">
+        Edit
+      </button>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="!user.emailEditing" (click)="user.emailEditing = false">
+        OK
+      </button>
+    </li>
+
+    <!-- **  MovieList  ** -->
     <li class="list-group-item">
       <a class="nav-link" href="/movielist/{{user._id}}">
         <h5> My MovieList </h5>
       </a>
     </li>
-    <li class="list-group-item" *ngIf="user.role === 'admin'">
-      <a class="nav-link" href="/movielist/{{user._id}}">
-        <h5> Manage Users </h5>
-      </a>
-    </li>
+
+
   </ul>
 
+
+  <button class="btn btn-success btn-block wbdv_profile_logoutBtn" (click)="saveUser()">
+    Save Changes
+  </button>
 
   <button class="btn btn-danger btn-block wbdv_profile_logoutBtn" (click)="logout()">
     Logout

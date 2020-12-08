@@ -14,35 +14,31 @@ export class ProfileComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    editing: false,
     role: '',
+    firstNameHide: false,
+    lastNameHide:  false,
+    emailHide:  false,
+    editing: false,
+    firstNameEditing: false,
+    lastNameEditing:  false,
+    emailEditing:  false,
   };
 
-  checkLoggedIn: {};
 
   constructor(private router: Router,
               private service: UserServiceClient) { }
 
   ngOnInit(): void {
-    // this.checkLoggedIn = sessionStorage.getItem('username');
-    // console.log('checkloggedIn' + this.checkLoggedIn)
-    // if (this.checkLoggedIn !== null) {
       this.service.profile()
         .then(profile => this.user = profile);
-    // }
   }
 
   logout = () =>
     this.service.logout()
       .then(status => this.router.navigate(['/']))
 
-  editUser = (topic) =>
-    topic.editing = true
+  saveUser = () =>
+    console.log(this.user)
 
-  saveUser = (topic) => {
-    topic.editing = false;
-    // this.topicService.updateTopic(topic);
-    // .then(status => this.modules = this.modules.map(m => m._id === module._id ? module : m))
-  }
 
 }
