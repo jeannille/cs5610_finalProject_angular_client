@@ -71,14 +71,14 @@ export class HomeComponent implements OnInit {
         .then(profile => this.user = profile);
       console.log(this.user._id);
     } catch (error) {
-      window.alert(error);
+      // window.alert(error);
     }
     // get local flag 'loggedIn'
     try {
       if (this.user._id !== undefined) {
         this.loggedIn = true;
-        window.alert('HOME| loggedIn : ' + this.loggedIn);
-        window.alert(JSON.stringify(this.user));
+        // window.alert('HOME| loggedIn : ' + this.loggedIn);
+        // window.alert(JSON.stringify(this.user));
       }
     } catch (error) {
       console.log('error');
@@ -90,19 +90,25 @@ export class HomeComponent implements OnInit {
       .then(results => this.curatedLists = results);
   }
 
-  getMovieObjects = async (movieId)  => {
+  getMovieObjects = async (movieId, parentId)  => {
     await  this.omdbService.fetchMovieByID(movieId)
       .then(movieObject => {
-        this.movieObjects.push(movieObject);
+          const myMO = {
+            parent: parentId,
+            value: movieObject
+          }
+          // window.alert('getMovieObjects, myMO: ' + myMO);
+          this.movieObjects.push(myMO);
         }
       );
-    console.log('movieOBJECTS ' + JSON.stringify(this.movieObjects));
+    // console.log('title test: ' + JSON.stringify(this.movieObjects[0].value.Title))
+    // console.log('movieOBJECTS ' + JSON.stringify(this.movieObjects));
   }
 
   convertMovieIdsToObjects = async () => {
     for (const list of this.curatedLists) {
       for (const movieId of list.movies) {
-        await this.getMovieObjects(movieId);
+        await this.getMovieObjects(movieId, list._id);
       }
     }
     // window.alert(JSON.stringify( this.movieObjects[0]));
@@ -110,6 +116,9 @@ export class HomeComponent implements OnInit {
 
   getMostRecentMovie = async () => {
     try {
+      await this.userService.findUserById(this.user._id)
+        .then(profile => this.user = profile);
+      console.log('getMostRecentMove :' + this.user.movies)
       this.movieId = this.user.movies[this.user.movies.length - 1];
     } catch (error) {
       console.log(error);
