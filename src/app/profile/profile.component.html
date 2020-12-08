@@ -62,27 +62,29 @@
     </li>
   </ul>
 
-  <div> Is the user an admin?:
-    <button [hidden]="user.role === 'Admin'">
-      No user is Anonymous
-    </button>
-    <button [hidden]="user.role !== 'Admin'">
-      Yes user is an admin
-    </button>
-  </div>
+<!--  testing hidden users table dependent on role-->
+<!--  <div> Is the user an admin?:-->
+<!--    <button [hidden]="user.role === 'Admin'">-->
+<!--      No user is Anonymous-->
+<!--    </button>-->
+<!--    <button [hidden]="user.role !== 'Admin'">-->
+<!--      Yes user is an admin-->
+<!--    </button>-->
+<!--  </div>-->
+
+
   <br>
+<!--  Hide Users table of user role is not Admin -->
+  <div class="table-responsive">
+    <h2 id="user-admin-header" >User Administrator View</h2>
+    <i class="fa fas-user "></i>
   <table class="table table-bordered" [hidden]="user.role !== 'Admin'">
-    <!--
-          COURSE TITLE : Links to Update URL
-          If the course is editing, hide course title.
-          Show input field.
-          If the course is NOT editing show course title link.
-          Hide input field.
-    -->
+
     <thead>
     <tr>
       <th>Username</th>
       <th>Password</th>
+      <th>Email</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Role</th>
@@ -93,9 +95,14 @@
     <td>
       {{user.username}}
     </td>
+
     <td>
       {{user.password}}
     </td>
+    <td>
+      {{user.email}}
+    </td>
+
     <td>
       {{user.firstName}}
     </td>
@@ -111,6 +118,7 @@
 
     <!--    maybe use if user.role === '', its an anonymous view-->
   </table>
+</div>
 
 
   <button class="btn btn-danger btn-block wbdv_profile_logoutBtn" (click)="logout()">
