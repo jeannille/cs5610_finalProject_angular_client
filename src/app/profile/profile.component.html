@@ -22,7 +22,7 @@
       <button class="btn btn-danger float-right"  [hidden]="user.firstNameHide "  (click)="user.firstNameHide = true" >
         Hide From Public
       </button>
-      <button class="btn btn-primary float-right"  [hidden]="!user.firstNameHide"  (click)="user.firstNameHide = false" >
+      <button class="btn btn-primary float-right"  [hidden]="!user.firstNameHide "  (click)="user.firstNameHide = false" >
         Show to Public
       </button>
       <input class="wdbv_input" [hidden]="!user.firstNameEditing" [(ngModel)]="user.firstName"/>

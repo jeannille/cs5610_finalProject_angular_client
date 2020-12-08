@@ -14,23 +14,23 @@
       <h5> Username : </h5>
       {{user.username}}
     </li>
-    <li class="list-group-item" [hidden]="user.firstNameDisplay !== true">
+    <li class="list-group-item" [hidden]="user.firstNameHide">
       <h5> First Name : </h5>
       {{user.firstName}}
     </li>
-    <li class="list-group-item" [hidden]="user.firstNameDisplay !== true">
+    <li class="list-group-item" [hidden]="user.lastNameHide">
       <h5> Last Name :  </h5>
       {{user.lastName}}
       <br>
     </li>
-    <li class="list-group-item" [hidden]="user.firstNameDisplay !== true">
+    <li class="list-group-item" [hidden]="user.emailHide">
       <h5> Email Name : </h5>
       <span [hidden]="user.editing">
       {{user.email}}
       </span>
       <br>
     </li>
-    <li class="list-group-item" [hidden]="user.firstNameDisplay !== true">
+    <li class="list-group-item">
       <a class="nav-link" href="/movielist/{{user._id}}">
         <h5> My MovieList </h5>
       </a>

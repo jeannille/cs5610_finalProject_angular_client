@@ -15,16 +15,17 @@ export class ProfileAnonComponent implements OnInit {
   user = {
     _id: '',
     username: '',
-    password: '',
-    movies: '',
     firstName: '',
     lastName: '',
     email: '',
+    role: '',
+    firstNameHide: false,
+    lastNameHide:  false,
+    emailHide:  false,
     editing: false,
-    moviesDisplay: false,
-    firstNameDisplay: false,
-    lastNameDisplay: false,
-    emailDisplay: false,
+    firstNameEditing: false,
+    lastNameEditing:  false,
+    emailEditing:  false,
   };
 
   constructor(private route: ActivatedRoute,
