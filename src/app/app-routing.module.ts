@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CourseListComponent} from './course-list/course-list.component';
-import {CourseViewerComponent} from './course-viewer/course-viewer.component';
 import {HomeComponent} from './home/home.component';
-import {QuizzesComponent} from './quizzes/quizzes.component';
 import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
@@ -13,7 +10,6 @@ import {MovieListComponent} from './movie-list/movie-list.component';
 import {ProfileAnonComponent} from './profile-anon/profile-anon.component';
 
 const routes: Routes = [
-  {path: 'quizzes', component: QuizzesComponent},
   {path: '', component: HomeComponent},
   {path: 'search', component: SearchComponent},
   {path: 'search/:searchText', component: SearchComponent},
@@ -25,9 +21,6 @@ const routes: Routes = [
   // do NOT delete this second iteration of HomeComponent allows page to refresh when user logs out
   {path: 'home', component: HomeComponent},
   {path: 'profile/:userID', component: ProfileAnonComponent}
-
-
-
 ];
 
 @NgModule({
