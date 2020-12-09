@@ -25,10 +25,10 @@
          class="form-control"/>
   <br/>
 <!--  TO DO : switch to select dropdown-->
-  <input placeholder="Choose Role"
-         type = "text"
-         [(ngModel)]="role"
-         class="form-control"/>
+<!--  <input placeholder="Choose Role"-->
+<!--         type = "text"-->
+<!--         [(ngModel)]="role"-->
+<!--         class="form-control"/>-->
   <br/>
   <input placeholder="First Name"
          type = "text"
@@ -42,14 +42,34 @@
   <br/>
 
   <ul>
-    <li class="list-group-item" *ngFor="let listedOption of options">
-    {{listedOption}}
+    <li class="list-group-item" >
+<!--    <form-->
+<!--      #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>-->
+<!--      <input name="first" ngModel required #first="ngModel">-->
+<!--      <input name="last" ngModel>-->
+
+<!--      <input type="radio" name="role" value="Admin" ngModel> Admin-->
+<!--      <input type="radio" name="role" value="Standard" ngModel> Standard-->
+
+<!--      <button>Submit</button>-->
+<!--    </form>-->
+<!--      <p>First name value: {{ first.value }}</p>-->
+<!--      <p>First name valid: {{ first.valid }}</p>-->
+<!--      <p>Form value: {{ f.value | json }}</p>-->
+<!--      <p>Form valid: {{ f.valid }}</p>-->
+
+<!--    </li>-->
+    <br>
+    <li class="list-group-item" *ngFor="let role of roles">
+      {{role}}
+
     <input
-      type="radio"
-      [(ngModel)]="selectedRole"
-      value="{{listedOption}}"
-    />
+           type = "radio"
+           [(ngModel)]="selectedRole"
+           value={{role}}
+           class="form-control"/>
     </li>
+    <br/>
   </ul>
 
   <button
