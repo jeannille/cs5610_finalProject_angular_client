@@ -10,7 +10,6 @@ import {LoginComponent} from './login/login.component';
 import {SearchComponent} from './search/search.component';
 import {SearchDetailsComponent} from './search-details/search-details.component';
 import {MovieListComponent} from './movie-list/movie-list.component';
-import {CuratedListComponent} from './curated-list/curated-list.component';
 import {ProfileAnonComponent} from './profile-anon/profile-anon.component';
 
 const routes: Routes = [
@@ -25,7 +24,6 @@ const routes: Routes = [
   {path: 'movielist/:uid', component: MovieListComponent},
   // do NOT delete this second iteration of HomeComponent allows page to refresh when user logs out
   {path: 'home', component: HomeComponent},
-  {path: 'curatedList', component: CuratedListComponent},
   {path: 'profile/:userID', component: ProfileAnonComponent}
 
 

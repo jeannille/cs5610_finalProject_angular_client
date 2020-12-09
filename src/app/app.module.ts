@@ -22,7 +22,6 @@ import { SearchDetailsComponent } from './search-details/search-details.componen
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieServiceClient} from './services/MovieServiceClient';
 import {CurateServiceClient} from './services/CurateServiceClient';
-import { CuratedListComponent } from './curated-list/curated-list.component';
 import { ProfileAnonComponent } from './profile-anon/profile-anon.component';
 
 @NgModule({
@@ -41,7 +40,6 @@ import { ProfileAnonComponent } from './profile-anon/profile-anon.component';
     SearchComponent,
     SearchDetailsComponent,
     MovieListComponent,
-    CuratedListComponent,
     ProfileAnonComponent
   ],
   imports: [

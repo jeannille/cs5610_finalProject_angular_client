@@ -24,12 +24,24 @@ export class HomeComponent implements OnInit {
     editing: false
   };
 
+  // curatedLists = [
+  //   {
+  //     movies: [],
+  //     title: '',
+  //     description: '',
+  //     _id: '',
+  //   }
+  // ];
+
   curatedLists = [
     {
-      movies: [],
-      title: '',
-      description: '',
       _id: '',
+      movieID: '',
+      movieObject: {
+        Poster: '',
+        Title: '',
+        Plot: '',
+      },
     }
   ];
 
@@ -49,6 +61,10 @@ export class HomeComponent implements OnInit {
     value: {},
   };
 
+  isAddingMovie: boolean;
+  addMovieId: '';
+  addMovieObject: {};
+  actualAddedObject:{};
 
   constructor( private userService: UserServiceClient,
                private curateService: CurateServiceClient,
@@ -58,9 +74,10 @@ export class HomeComponent implements OnInit {
    // CuratedLists are movieIDs which need
    // to be converted to Objects
    async ngOnInit(): Promise<void> {
+    this.isAddingMovie = false;
     await this.isUserLoggedIn();
     await this.getCuratedLists();
-    await this.convertMovieIdsToObjects();
+    // await this.convertMovieIdsToObjects();
     await this.getMostRecentMovie();
   }
 
@@ -73,7 +90,7 @@ export class HomeComponent implements OnInit {
     } catch (error) {
       // window.alert(error);
     }
-    // get local flag 'loggedIn'
+    // create local flag 'loggedIn'
     try {
       if (this.user._id !== undefined) {
         this.loggedIn = true;
@@ -90,29 +107,47 @@ export class HomeComponent implements OnInit {
       .then(results => this.curatedLists = results);
   }
 
-  getMovieObjects = async (movieId, parentId)  => {
-    await  this.omdbService.fetchMovieByID(movieId)
-      .then(movieObject => {
-          const myMO = {
-            parent: parentId,
-            value: movieObject
-          }
-          // window.alert('getMovieObjects, myMO: ' + myMO);
-          this.movieObjects.push(myMO);
-        }
-      );
-    // console.log('title test: ' + JSON.stringify(this.movieObjects[0].value.Title))
-    // console.log('movieOBJECTS ' + JSON.stringify(this.movieObjects));
+  deleteFromCuratedList = async (docID) => {
+    window.alert('deleteFromCuratedList : ' + docID)
+    await this.curateService.deleteFromCuratedList(docID);
+    await this.getCuratedLists();
   }
 
-  convertMovieIdsToObjects = async () => {
-    for (const list of this.curatedLists) {
-      for (const movieId of list.movies) {
-        await this.getMovieObjects(movieId, list._id);
-      }
-    }
-    // window.alert(JSON.stringify( this.movieObjects[0]));
+  addToCuratedList = async () => {
+    await this.omdbService.fetchMovieByID(this.addMovieId)
+      .then(addMovieObject => this.addMovieObject = addMovieObject);
+    console.log(' *** addToCuratedList()  ***  :' + this.addMovieObject);
+    await this.curateService.addToCuratedList(this.addMovieId, this.addMovieObject)
+      .then(actualAddedObject => this.actualAddedObject = actualAddedObject);
+    await this.getCuratedLists();
   }
+
+
+
+  // getMovieObjects = async (movieId, parentId)  => {
+  //   await  this.omdbService.fetchMovieByID(movieId)
+  //     .then(movieObject => {
+  //         const myMO = {
+  //           parent: parentId,
+  //           value: movieObject
+  //         }
+  //         // window.alert('getMovieObjects, myMO: ' + myMO);
+  //         this.movieObjects.push(myMO);
+  //       }
+  //     );
+  //   // console.log('title test: ' + JSON.stringify(this.movieObjects[0].value.Title))
+  //   // console.log('movieOBJECTS ' + JSON.stringify(this.movieObjects));
+  // }
+
+  // convertMovieIdsToObjects = async () => {
+  //   for (const list of this.curatedLists) {
+  //     for (const movieId of list.movies) {
+  //       await this.getMovieObjects(movieId, list._id);
+  //     }
+  //   }
+  //   // window.alert(JSON.stringify( this.movieObjects[0]));
+  // }
+
 
   getMostRecentMovie = async () => {
     try {
