@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
   register = (username, password, role, firstName, lastName, email) => {
     role = this.selectedRole;
     console.log(username, password, role, firstName, lastName, email);
-    console.log(JSON.stringify(this.selectedRole));
     this.service.register(username, password, role, firstName, lastName, email)
       .then(actualUser => {
         console.log('USER REGISTERED:', actualUser);

@@ -41,36 +41,21 @@
          class="form-control"/>
   <br/>
 
-  <ul>
-    <li class="list-group-item" >
-<!--    <form-->
-<!--      #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>-->
-<!--      <input name="first" ngModel required #first="ngModel">-->
-<!--      <input name="last" ngModel>-->
-
-<!--      <input type="radio" name="role" value="Admin" ngModel> Admin-->
-<!--      <input type="radio" name="role" value="Standard" ngModel> Standard-->
-
-<!--      <button>Submit</button>-->
-<!--    </form>-->
-<!--      <p>First name value: {{ first.value }}</p>-->
-<!--      <p>First name valid: {{ first.valid }}</p>-->
-<!--      <p>Form value: {{ f.value | json }}</p>-->
-<!--      <p>Form valid: {{ f.valid }}</p>-->
-
-<!--    </li>-->
+  <ul class = "list-group list-group-flush">
     <br>
-    <li class="list-group-item" *ngFor="let role of roles">
+      <h5>Selected User Role: </h5>
+    <li class="list-group-item float-left" *ngFor="let role of roles" id="user-register-role">
       {{role}}
-
     <input
            type = "radio"
            [(ngModel)]="selectedRole"
            value={{role}}
-           class="form-control"/>
+           />
     </li>
+
     <br/>
   </ul>
+  <br/>
 
   <button
     (click)="register(username, password, role, firstName, lastName, email)"
