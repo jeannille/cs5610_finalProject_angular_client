@@ -38,7 +38,7 @@
 
 <!--        <button class="btn btn-success" *ngIf="user.role === 'admin'"> Add Movie </button>-->
     <div *ngIf="user.role === 'admin'" >
-    <input class="wdbv_input" [hidden]="!isAddingMovie" [(ngModel)]="addMovieId"/>
+    <input class="wdbv_input" placeholder="Enter movie ID" [hidden]="!isAddingMovie" [(ngModel)]="addMovieId"/>
     <button class="btn btn-success  wbdv_edit_btn" [hidden]="isAddingMovie" (click)="isAddingMovie = true;">
       Add Movie
     </button>
@@ -58,10 +58,8 @@
               <h5 class="card-title"> {{movie.movieObject.Title}}   </h5>
               <p class="card-text">   {{movie.movieObject.Plot}} </p>
               <a href="/details/{{movie.movieID}}" class="btn btn-primary btn-block"> Details </a>
-              <button class="btn btn-danger"
-                      *ngIf="user.role === 'admin'"
-                      (click)="deleteFromCuratedList(movie._id)"
-              > Delete </button>
+              <button class="btn btn-danger wbdv_deleteBtn"  *ngIf="user.role === 'admin'"
+                      (click)="deleteFromCuratedList(movie._id)"> Delete </button>
             </div>
           </div>
         </div>
