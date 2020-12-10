@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    role: 'admin',
+    role: '',
     editing: false
   };
 

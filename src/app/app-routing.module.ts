@@ -8,6 +8,7 @@ import {SearchComponent} from './search/search.component';
 import {SearchDetailsComponent} from './search-details/search-details.component';
 import {MovieListComponent} from './movie-list/movie-list.component';
 import {ProfileAnonComponent} from './profile-anon/profile-anon.component';
+import {ViewAllUsersComponent} from './view-all-users/view-all-users.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'movielist/:uid', component: MovieListComponent},
   // do NOT delete this second iteration of HomeComponent allows page to refresh when user logs out
   {path: 'home', component: HomeComponent},
-  {path: 'profile/:userID', component: ProfileAnonComponent}
+  {path: 'profile/:userID', component: ProfileAnonComponent},
+  {path: 'viewAllUsers', component: ViewAllUsersComponent}
 ];
 
 @NgModule({

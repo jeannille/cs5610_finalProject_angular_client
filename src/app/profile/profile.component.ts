@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
   user = {
     _id: '',
     username: '',
+    password: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -22,15 +23,19 @@ export class ProfileComponent implements OnInit {
     firstNameEditing: false,
     lastNameEditing:  false,
     emailEditing:  false,
+    passwordEditing: false,
   };
 
+  users = [];
 
   constructor(private router: Router,
               private service: UserServiceClient) { }
 
-  ngOnInit(): void {
-      this.service.profile()
+  async ngOnInit(): Promise<void> {
+      await this.service.profile()
         .then(profile => this.user = profile);
+      await this.service.findAllUsers()
+        .then(users => this.users = users);
   }
 
   logout = () =>

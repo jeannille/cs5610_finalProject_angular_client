@@ -67,15 +67,31 @@ export class UserServiceClient {
       .catch(err => console.log(err))
 
 
-  register = (username, password) =>
+  // register = (username, password) =>
+  //   fetch(`http://localhost:3000/register`, {
+  //     method: 'POST',
+  //     body: JSON.stringify({username, password}),
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     },
+  //     credentials: 'include'
+  //   }).then(response => response.json())
+  //     .catch(err => console.log(err))
+
+  register = (username, password, role, firstName, lastName, email) =>
     fetch(`http://localhost:3000/register`, {
       method: 'POST',
-      body: JSON.stringify({username, password}),
+      body: JSON.stringify({username, password, role, firstName, lastName, email}),
       headers: {
         'content-type': 'application/json'
       },
       credentials: 'include'
     }).then(response => response.json())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+
+
+  findAllUsers = () =>
+    fetch('http://localhost:3000/api/users')
+      .then(response => response.json())
 
 }

@@ -16,6 +16,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieServiceClient} from './services/MovieServiceClient';
 import {CurateServiceClient} from './services/CurateServiceClient';
 import { ProfileAnonComponent } from './profile-anon/profile-anon.component';
+import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileAnonComponent } from './profile-anon/profile-anon.component';
     SearchComponent,
     SearchDetailsComponent,
     MovieListComponent,
-    ProfileAnonComponent
+    ProfileAnonComponent,
+    ViewAllUsersComponent
   ],
   imports: [
     FormsModule,

@@ -10,8 +10,26 @@
       {{user._id}}
     </li>
     <li class="list-group-item">
+      <h5> Role : </h5>
+      {{user.role}}
+    </li>
+    <li class="list-group-item">
       <h5> Username : </h5>
       {{user.username}}
+    </li>
+    <!-- **  Password  ** -->
+    <li class="list-group-item">
+      <h5> Password :  </h5>
+      <span [hidden]="user.passwordEditing">
+        {{user.password}}
+      </span>
+      <input class="wdbv_input" [hidden]="!user.passwordEditing" [(ngModel)]="user.password"/>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="user.passwordEditing" (click)="user.passwordEditing = true">
+        Edit
+      </button>
+      <button class="btn btn-success float-right wbdv_edit_btn" [hidden]="!user.passwordEditing" (click)="user.passwordEditing = false">
+        OK
+      </button>
     </li>
     <!-- **  First Name  ** -->
     <li class="list-group-item">
@@ -80,6 +98,11 @@
         <h5> My MovieList </h5>
       </a>
     </li>
+    <li *ngIf="user.role == 'Admin'" class="list-group-item">
+      <a class="nav-link" href="/viewAllUsers">
+        <h5> View All Users </h5>
+      </a>
+    </li>
 
 
   </ul>
@@ -95,3 +118,8 @@
 
 
 </div>
+
+
+
+
+
