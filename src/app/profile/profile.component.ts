@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/UserServiceClient';
 import {Router} from '@angular/router';
+import {GlobalConstants} from '../../global';
 
 @Component({
   selector: 'app-profile',
@@ -32,9 +33,9 @@ export class ProfileComponent implements OnInit {
               private service: UserServiceClient) { }
 
   async ngOnInit(): Promise<void> {
-      await this.service.profile()
+    await this.service.profile()
         .then(profile => this.user = profile);
-      await this.service.findAllUsers()
+    await this.service.findAllUsers()
         .then(users => this.users = users);
   }
 
