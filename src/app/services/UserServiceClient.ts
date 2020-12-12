@@ -6,7 +6,7 @@ export class UserServiceClient {
 
   // for updating only the user's "movies" array
   update = (userId, newEdits) =>
-    fetch(`http://localhost:3000/update/` + userId, {
+    fetch(`https://movie-match-nodejs-server.herokuapp.com/update/` + userId, {
       method: 'PUT',
       body: JSON.stringify(newEdits),
       headers: {
@@ -17,7 +17,7 @@ export class UserServiceClient {
       .catch(err => console.log(err))
 
   deleteMovie = (userId, newEdits) =>
-    fetch(`http://localhost:3000/deleteMovie/` + userId, {
+    fetch(`https://movie-match-nodejs-server.herokuapp.com/deleteMovie/` + userId, {
       method: 'PUT',
       body: JSON.stringify(newEdits),
       headers: {
@@ -29,7 +29,7 @@ export class UserServiceClient {
 
   // for updating all other attributes of user profile (except movies array)
   updateProfile = (userId, newEdits) =>
-    fetch(`http://localhost:3000/updateProfile/` + userId, {
+    fetch(`https://movie-match-nodejs-server.herokuapp.com/updateProfile/` + userId, {
       method: 'PUT',
       body: JSON.stringify(newEdits),
       headers: {
@@ -40,7 +40,7 @@ export class UserServiceClient {
       .catch(err => console.log(err))
 
   findUserById = (userId) =>
-    fetch(`http://localhost:3000/findUserById/` + userId, {
+    fetch(`https://movie-match-nodejs-server.herokuapp.com/findUserById/` + userId, {
       method: 'POST',
       body: JSON.stringify({userId}),
       headers: {
@@ -51,14 +51,14 @@ export class UserServiceClient {
       .catch(err => console.log(err))
 
   logout = () =>
-    fetch(`http://localhost:3000/logout`, {
+    fetch(`https://movie-match-nodejs-server.herokuapp.com/logout`, {
       method: 'POST',
       credentials: 'include'
     }).catch(err => console.log(err))
 
 
   profile = async () =>
-    await fetch(`http://localhost:3000/profile`, {
+    await fetch(`https://movie-match-nodejs-server.herokuapp.com/profile`, {
       method: 'POST',
       credentials: 'include'
     }).then(response => response.json())
@@ -66,7 +66,7 @@ export class UserServiceClient {
 
 
   login = (username, password) =>
-    fetch(`http://localhost:3000/login`, {
+    fetch(`https://movie-match-nodejs-server.herokuapp.com/login`, {
       method: 'POST',
       body: JSON.stringify({username, password}),
       headers: {
@@ -78,7 +78,7 @@ export class UserServiceClient {
 
 
   register = (username, password, role, firstName, lastName, email) =>
-    fetch(`http://localhost:3000/register`, {
+    fetch(`https://movie-match-nodejs-server.herokuapp.com/register`, {
       method: 'POST',
       body: JSON.stringify({username, password, role, firstName, lastName, email}),
       headers: {
@@ -90,7 +90,7 @@ export class UserServiceClient {
 
 
   findAllUsers = () =>
-    fetch('http://localhost:3000/api/users')
+    fetch('https://movie-match-nodejs-server.herokuapp.com/api/users')
       .then(response => response.json())
 
 }
