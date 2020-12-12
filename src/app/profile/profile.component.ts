@@ -17,25 +17,28 @@ export class ProfileComponent implements OnInit {
     email: '',
     role: '',
     firstNameHide: false,
-    lastNameHide:  false,
-    emailHide:  false,
+    lastNameHide: false,
+    emailHide: false,
     editing: false,
     firstNameEditing: false,
-    lastNameEditing:  false,
-    emailEditing:  false,
+    lastNameEditing: false,
+    emailEditing: false,
     passwordEditing: false,
   };
 
   users = [];
 
+  actualUser = {};
+
   constructor(private router: Router,
-              private service: UserServiceClient) { }
+              private service: UserServiceClient) {
+  }
 
   async ngOnInit(): Promise<void> {
-      await this.service.profile()
-        .then(profile => this.user = profile);
-      await this.service.findAllUsers()
-        .then(users => this.users = users);
+    await this.service.profile()
+      .then(profile => this.user = profile);
+    await this.service.findAllUsers()
+      .then(users => this.users = users);
   }
 
   logout = () =>
@@ -45,9 +48,7 @@ export class ProfileComponent implements OnInit {
   saveUser = () => {
     console.log(this.user);
     this.service.updateProfile(this.user._id, this.user)
-      .then(actualUser => window.alert(JSON.stringify(actualUser)));
-    // this.service.update(this.user._id, this.user)
-    //   .then(status => window.alert('Your Changes have been Saved'));
+      .then(actualUser => window.alert('Your changes have been saved!'));
   }
 
 }

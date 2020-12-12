@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   login = (username, password) => {
     this.service.login(username, password)
       .then(actualUser => {
-        console.log(actualUser.errorMessage);
         if (actualUser.errorMessage === undefined) {
           this.router.navigate(['/profile']);
         } else {

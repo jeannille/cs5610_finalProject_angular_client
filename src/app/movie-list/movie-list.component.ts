@@ -39,34 +39,8 @@ export class MovieListComponent implements OnInit {
 
   constructor(private userservice: UserServiceClient,
               private omdbService: OMDBServiceClient,
-              private route: ActivatedRoute,
-  ) {
-  }
+              private route: ActivatedRoute) {}
 
-  // async ngOnInit(): Promise<void> {
-  //    await this.getUserProfile();
-  // }
-  //
-  // findUserById = async () => {
-  //   await this.userservice.findUserById(this.user._id)
-  //     .then(actualUser => this.user2 = actualUser);
-  // }
-  //
-  // getUserProfile = async () => {
-  //   await this.userservice.profile()
-  //     .then(profile => this.user = profile)
-  //   await this.findUserById();
-  //   for (const movieId of this.user2.movies) {
-  //     console.log(movieId);
-  //     this.fetchMovieByID(movieId);
-  //   }
-  // }
-  //
-  //   fetchMovieByID = async (movieID) => {
-  //     await this.omdbService.fetchMovieByID(movieID)
-  //       .then(movieDocument => this.movieObjectsList.push(movieDocument));
-  //     console.log(this.movieObjectsList);
-  //   }
 
   async ngOnInit(): Promise<void> {
     await this.route.params.subscribe(params => {
@@ -96,7 +70,6 @@ export class MovieListComponent implements OnInit {
 
   deleteFromMovieList = async (movieID) => {
       const newEdits = {movies: movieID};
-      window.alert('deleteFromMovieList: ' + JSON.stringify(newEdits));
       await this.userservice.deleteMovie(this.user._id, newEdits)
         .then(updatedUser => this.user = updatedUser);
       await this.afterDeleteUpdateMovieList();

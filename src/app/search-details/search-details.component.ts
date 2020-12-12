@@ -105,11 +105,9 @@ export class SearchDetailsComponent implements OnInit {
 
   getUserProfiles = async () => {
     for (const userId of this.movieMatchDetails.usersThatAddedMovie) {
-      window.alert('findUserByID function reached wih userID : ' + userId);
       await this.userService.findUserById(userId)
         .then(userDoc => this.userProfiles.push(userDoc));
     }
-    window.alert(this.userProfiles);
   }
 
 
@@ -139,8 +137,6 @@ export class SearchDetailsComponent implements OnInit {
 
   // Update the user's MovieList
   updateUserMovieList = async () => {
-    window.alert('Search Details | UserID :' + this.user._id + this.user.username +
-      ' | MovieID is : ' + this.movie.imdbID);
     await this.userService.update(this.user._id, {movies: this.movie.imdbID})
       .then(actualUser => {
         if (actualUser !== undefined || null) {
@@ -153,7 +149,6 @@ export class SearchDetailsComponent implements OnInit {
       const indexOfMostRecentUser = this.movieMatchDetails.usersThatAddedMovie.length - 1;
       await this.userService.findUserById(this.movieMatchDetails.usersThatAddedMovie[indexOfMostRecentUser])
         .then(userDoc => this.userProfiles.push(userDoc));
-      window.alert(this.userProfiles);
   }
 
 

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 
-// " credentials: 'include' " -- passes cookies to server
 
 @Injectable()
 export class MovieServiceClient {

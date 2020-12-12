@@ -54,7 +54,7 @@
               <h5 class="card-title mt-auto"> {{movie.movieObject.Title}}   </h5>
               <p class="card-text mt-auto">   {{movie.movieObject.Plot}} </p>
               <a href="/details/{{movie.movieID}}" class="btn btn-primary btn-block"> Details </a>
-              <button class="btn btn-danger wbdv_deleteBtn mt-auto"  *ngIf="user.role === 'Admin'"
+              <button class="btn btn-danger wbdv_deleteBtn "  *ngIf="user.role === 'Admin'"
                       (click)="deleteFromCuratedList(movie._id)"> Delete </button>
             </div>
           </div>

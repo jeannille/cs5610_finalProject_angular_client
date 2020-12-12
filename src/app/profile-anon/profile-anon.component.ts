@@ -43,10 +43,8 @@ export class ProfileAnonComponent implements OnInit {
 
 
   getUserProfiles = async () => {
-      window.alert('findUserByID function reached wih userID : ' + this.userID);
       await this.userService.findUserById(this.userID)
         .then(userDoc => this.user = userDoc);
-      window.alert(this.user);
   }
 
 

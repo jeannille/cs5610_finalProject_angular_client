@@ -60,9 +60,6 @@ export class RegisterComponent implements OnInit {
   selectedRole: any;
   roles = ['Admin', 'Standard'];
 
-  // @Input()
-  // role = '';
-
   getSelectedRole() {
     this.selectedRole = this.roles.find(choice => choice === this.radioSelected);
     this.radioSelectedString = JSON.stringify(this.selectedRole);
@@ -77,7 +74,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/profile']);
       });
   };
-
 
 
   ngOnInit(): void {

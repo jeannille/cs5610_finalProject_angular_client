@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OMDBServiceClient} from '../services/OMDBServiceClient';
 import {ActivatedRoute} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
-import {error} from '@angular/compiler/src/util';
+
 
 @Component({
   selector: 'app-search',

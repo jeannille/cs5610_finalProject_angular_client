@@ -5,14 +5,17 @@
   <h1>Profile </h1>
   <p class="lead text-muted"> After modifying, click 'Save Changes' at the bottom of the screen. </p>
   <ul class="list-group" >
+    <!-- **  UserID   ** -->
     <li class="list-group-item">
       <h5> UserId : </h5>
       {{user._id}}
     </li>
+    <!-- **  User Role  ** -->
     <li class="list-group-item">
       <h5> Role : </h5>
       {{user.role}}
     </li>
+    <!-- **  Username  ** -->
     <li class="list-group-item">
       <h5> Username : </h5>
       {{user.username}}
@@ -92,26 +95,25 @@
       </button>
     </li>
 
-    <!-- **  MovieList  ** -->
+    <!-- **  MovieList Link  ** -->
     <li class="list-group-item">
       <a class="nav-link" href="/movielist/{{user._id}}">
         <h5> My MovieList </h5>
       </a>
     </li>
+    <!-- **  View All Users Link  ** -->
     <li *ngIf="user.role == 'Admin'" class="list-group-item">
       <a class="nav-link" href="/viewAllUsers">
         <h5> View All Users </h5>
       </a>
     </li>
-
-
   </ul>
 
-
+  <!-- **  Save Changes Button  ** -->
   <button class="btn btn-success btn-block wbdv_profile_logoutBtn" (click)="saveUser()">
     Save Changes
   </button>
-
+  <!-- **  Logout Button  ** -->
   <button class="btn btn-danger btn-block wbdv_profile_logoutBtn" (click)="logout()">
     Logout
   </button>
