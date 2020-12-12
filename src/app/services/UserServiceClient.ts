@@ -17,6 +17,17 @@ export class UserServiceClient {
     }).then(response => response.json())
       .catch(err => console.log(err))
 
+  deleteMovie = (userId, newEdits) =>
+    fetch(`http://localhost:3000/deleteMovie/` + userId, {
+      method: 'PUT',
+      body: JSON.stringify(newEdits),
+      headers: {
+        'content-type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(response => response.json())
+      .catch(err => console.log(err))
+
   // for updating all other attributes of user profile (except movies array)
   updateProfile = (userId, newEdits) =>
     fetch(`http://localhost:3000/updateProfile/` + userId, {

@@ -89,5 +89,17 @@ export class MovieListComponent implements OnInit {
     console.log(this.movieObjectsList);
   }
 
+  afterDeleteUpdateMovieList = async () => {
+    this.movieObjectsList = [];
+    await this.fetchMovieByID();
+  }
+
+  deleteFromMovieList = async (movieID) => {
+      const newEdits = {movies: movieID};
+      window.alert('deleteFromMovieList: ' + JSON.stringify(newEdits));
+      await this.userservice.deleteMovie(this.user._id, newEdits)
+        .then(updatedUser => this.user = updatedUser);
+      await this.afterDeleteUpdateMovieList();
+  }
 
 }

@@ -36,3 +36,15 @@
 .wbdv_deleteBtn{
   margin-top:5px;
 }
+
+
+.card-img-top {
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+}
+
+.card-body {
+  width: 100%;
+  height: 18vw;
+}

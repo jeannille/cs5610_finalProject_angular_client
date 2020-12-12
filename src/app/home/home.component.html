@@ -21,8 +21,7 @@
       </h5>
     </div>
   </div>
-
-  <!-- ** CuratedList ** -->
+  <!-- ** CuratedList : Heading ** -->
   <div class ="container">
     <div class=" wdbv_home_curatedList">
       <div>
@@ -35,8 +34,7 @@
     </div>
   </div>
   <div class="container">
-
-<!--        <button class="btn btn-success" *ngIf="user.role === 'admin'"> Add Movie </button>-->
+    <!-- ** CuratedList : Add Movie Button  ** -->
     <div *ngIf="user.role === 'Admin'" >
     <input class="wdbv_input" placeholder="Enter movie ID" [hidden]="!isAddingMovie" [(ngModel)]="addMovieId"/>
     <button class="btn btn-success  wbdv_edit_btn" [hidden]="isAddingMovie" (click)="isAddingMovie = true;">
@@ -46,19 +44,17 @@
       Submit
     </button>
     </div>
-
-
-<!--    <button class="btn btn-success" *ngIf="user.role === 'admin'"> Add Movie </button>-->
+    <!-- ** CuratedList : Movie Cards ** -->
     <div class="row wdbv-searchByID-row">
       <div *ngFor="let movie of curatedLists">
         <div class="wbdv_home_cardDeck col-auto mb-3">
           <div class="card wbdv-search-card text-center " style="width: 18rem;">
             <img class="card-img-top wbdv-search-card-img-top" src="{{movie.movieObject.Poster}}" alt="Card image cap">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title"> {{movie.movieObject.Title}}   </h5>
-              <p class="card-text">   {{movie.movieObject.Plot}} </p>
+              <h5 class="card-title mt-auto"> {{movie.movieObject.Title}}   </h5>
+              <p class="card-text mt-auto">   {{movie.movieObject.Plot}} </p>
               <a href="/details/{{movie.movieID}}" class="btn btn-primary btn-block"> Details </a>
-              <button class="btn btn-danger wbdv_deleteBtn"  *ngIf="user.role === 'Admin'"
+              <button class="btn btn-danger wbdv_deleteBtn mt-auto"  *ngIf="user.role === 'Admin'"
                       (click)="deleteFromCuratedList(movie._id)"> Delete </button>
             </div>
           </div>
@@ -83,7 +79,6 @@
       <a href="/login" class="btn btn-secondary my-2 wbdv-home-jumbotron-btn"> Login </a>
     </div>
   </div>
-
   <!-- ** CuratedList ** -->
   <div class ="container">
     <div class=" wdbv_home_curatedList">
@@ -103,9 +98,9 @@
           <div class="card wbdv-search-card text-center " style="width: 18rem;">
             <img class="card-img-top wbdv-search-card-img-top" src="{{movie.movieObject.Poster}}" alt="Card image cap">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title"> {{movie.movieObject.Title}}   </h5>
-              <p class="card-text">   {{movie.movieObject.Plot}} </p>
-              <a href="/details/{{movie.movieID}}" class="btn btn-primary btn-block"> Details </a>
+              <h5 class="card-title mt-auto"> {{movie.movieObject.Title}}   </h5>
+              <p class="card-text mt-auto ">   {{movie.movieObject.Plot}} </p>
+              <a href="/details/{{movie.movieID}}" class="btn btn-primary btn-block mt-auto "> Details </a>
             </div>
           </div>
         </div>
