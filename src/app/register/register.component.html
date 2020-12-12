@@ -75,8 +75,9 @@
     <br>
     <h5>Selected User Role: </h5>
     <li class="list-group-item float-left" *ngFor="let role of roles" id="user-register-role">
-      {{role}}
+      <label for="{{role}}"> {{role}} &nbsp;  </label>
       <input
+        id="{{role}}"
         type = "radio"
         [(ngModel)]="selectedRole"
         value={{role}}
