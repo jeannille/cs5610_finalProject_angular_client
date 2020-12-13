@@ -41,15 +41,37 @@ export class ProfileComponent implements OnInit {
 
   logout = () =>
     this.service.logout()
-      .then(status => this.router.navigate(['/']))
+      .then(status => this.router.navigate(['/']));
 
   editUser = (topic) =>
-    topic.editing = true
+    topic.editing = true;
 
   saveUser = (topic) => {
     topic.editing = false;
     // this.topicService.updateTopic(topic);
     // .then(status => this.modules = this.modules.map(m => m._id === module._id ? module : m))
   }
+
+  userDefined = () => {
+    if (typeof this.user === undefined) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  register = () => {
+    this.router.navigate(['/profile']);
+  };
+
+  // forceLogin = () => {
+  //   if (this.user.password === '') {
+  //     console.log('must log in!');
+  //     alert('not logged in, navigating to Register page');
+  //     //go to login page
+  //     this.router.navigate(['/register']);
+  //   }
+  // };
+
 
 }

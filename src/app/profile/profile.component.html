@@ -1,7 +1,11 @@
 <app-nav-bar></app-nav-bar>
 
-
-<div class="wbdv_profile_page">
+<!--[hidden] = "userDefined() === 1" -->
+<div class = "container container-fluid" [hidden]="user.password && user.username">
+  <br> <h1> User account required </h1>
+  Please register here: <button routerLink = "/register" >Register</button>
+</div>
+<div class="wbdv_profile_page" [hidden]="!user.password">
 
   <h1>Profile Page</h1>
 
