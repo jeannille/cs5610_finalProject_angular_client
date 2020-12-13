@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/UserServiceClient';
 import {OMDBServiceClient} from '../services/OMDBServiceClient';
 import {ActivatedRoute} from '@angular/router';
+import {MovieServiceClient} from '../services/MovieServiceClient';
 
 @Component({
   selector: 'app-movie-list',
@@ -39,6 +40,7 @@ export class MovieListComponent implements OnInit {
 
   constructor(private userservice: UserServiceClient,
               private omdbService: OMDBServiceClient,
+              private movieService: MovieServiceClient,
               private route: ActivatedRoute) {}
 
 
@@ -68,11 +70,17 @@ export class MovieListComponent implements OnInit {
     await this.fetchMovieByID();
   }
 
+  deleteFromMovieDetails = async (movieID) => {
+    await this.movieService.updateMovieDetailsRemoveUser(movieID, this.user._id)
+      .then(updatedMovieDetails => console.log(updatedMovieDetails));
+  }
+
   deleteFromMovieList = async (movieID) => {
       const newEdits = {movies: movieID};
       await this.userservice.deleteMovie(this.user._id, newEdits)
         .then(updatedUser => this.user = updatedUser);
       await this.afterDeleteUpdateMovieList();
+      await this.deleteFromMovieDetails(movieID);
   }
 
 }
