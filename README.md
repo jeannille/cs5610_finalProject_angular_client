@@ -11,10 +11,10 @@ Components Directory : Holds the HTML, logic of the components, and styling for 
 
 Website Capbilities: </br>
  - create a user profile </n>
-<br> - sign in and sign out of a profile </br>
-<br> - search IMDB's database of movies </br>
-<br> - save movie objects to your user profile </br>
-<br> - fetch your list of favorited movies </br>
+ - sign in and sign out of a profile  </n>
+ - search IMDB's database of movies  </n>
+ - save movie objects to your user profile  </n>
+ - fetch your list of favorited movies  </n>
 
 
 # WbdvSp20JannunziClientAngular
