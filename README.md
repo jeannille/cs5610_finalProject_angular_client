@@ -9,12 +9,12 @@ This website is created as a single page application. Components are rendered as
 
 Components Directory : Holds the HTML, logic of the components, and styling for each corresponding component. This is found in src > app 
 
-Website Capbilities: </n>
- - create a user profile </n>
- - sign in and sign out of a profile  </n>
- - search IMDB's database of movies  </n>
- - save movie objects to your user profile  </n>
- - fetch your list of favorited movies  </n>
+Website Capbilities: 
+create a user profile 
+sign in and sign out of a profile  
+search IMDB's database of movies  
+save movie objects to your user profile  
+fetch your list of favorited movies  
 
 
 # WbdvSp20JannunziClientAngular
