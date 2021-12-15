@@ -12,6 +12,11 @@ Components Directory : Holds the HTML, logic of the components, and styling for 
 Website Capbilities: create a user profile, sign in and sign out of a profile, search IMDB's database of movies, save movie objects to your user profile, and 
 fetch your list of favorited movies  
 
+Other Features: Conditionally renders different home page and navigation bar depending on type on if the user is signed in or a guest.
+And conditionally renders components on the homepage and navigation bar based on the type of user, administrative user vs. basic user. 
+The administrative user has additional rights to view profile information about all other users and is allowed to add/edit movie 
+titles on the main page from the UI. 
+
 
 ## Development server
 
