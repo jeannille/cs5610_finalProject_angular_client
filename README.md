@@ -15,7 +15,7 @@ fetch your list of favorited movies
 Other Features: Conditionally renders different home page and navigation bar depending on type on if the user is signed in or a guest.
 And conditionally renders components on the homepage and navigation bar based on the type of user, administrative user vs. basic user. 
 The administrative user has additional rights to view profile information about all other users and is allowed to add/edit movie 
-titles on the main page from the UI. 
+titles on the home page from the UI. 
 
 
 ## Development server
