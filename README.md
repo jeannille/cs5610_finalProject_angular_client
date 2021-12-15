@@ -1,4 +1,4 @@
-# LocalEats -- Boston
+# MovieMatch 
 A website to search and save your favorite movies. 
 
 ## View Deployed Website on Heroku
