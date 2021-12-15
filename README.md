@@ -1,3 +1,14 @@
+# LocalEats -- Boston
+A website to search and save your favorite movies. 
+
+## View Deployed Website on Heroku
+http://movie-match-angular.herokuapp.com/
+
+File Structure
+This website is created as a single page application. Components are rendered as they are called.
+
+Components Directory : Holds the HTML, logic of the components, and styling for each corresponding component. This is found in src > app 
+
 # WbdvSp20JannunziClientAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
