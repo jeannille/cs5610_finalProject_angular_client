@@ -17,6 +17,8 @@ And conditionally renders components on the homepage and navigation bar based on
 The administrative user has additional rights to view profile information about all other users and is allowed to add/edit movie 
 titles on the home page from the UI. 
 
+Full Documentation : https://www.notion.so/cs5610-collab-submissionForm-fdde9ccac5f04f97bebaf4057100042f
+
 
 ## Development server
 
