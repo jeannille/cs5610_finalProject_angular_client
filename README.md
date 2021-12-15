@@ -9,6 +9,14 @@ This website is created as a single page application. Components are rendered as
 
 Components Directory : Holds the HTML, logic of the components, and styling for each corresponding component. This is found in src > app 
 
+Website Capbilities: 
+<br> - create a user profile </br>
+<br> - sign in and sign out of a profile </br>
+<br> - search IMDB's database of movies </br>
+<br> - save movie objects to your user profile </br>
+<br> - fetch your list of favorited movies </br>
+
+
 # WbdvSp20JannunziClientAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
